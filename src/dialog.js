@@ -1,12 +1,18 @@
 import React, { useState } from 'react';
-import './dialog.css'
+import './dialog.css';
 
-const Dialog = ({ title, content }) => {
+const Dialog = ({ title, content, onToggle }) => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const openDialog = () => setIsOpen(true);
-  const closeDialog = () => setIsOpen(false);
+  const openDialog = () => {
+    setIsOpen(true);
+  };
 
+  const closeDialog = () => {
+    setIsOpen(false);
+    onToggle();
+
+  }
   return (
     <div>
       <button onClick={openDialog}>Iniciar</button>
