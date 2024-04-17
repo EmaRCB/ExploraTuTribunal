@@ -1,0 +1,60 @@
+.dialog {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    max-width: 400px;
+    height: fit-content;
+    text-align: center;
+    
+  }
+
+  .dialog::after, .dialog::before{
+    right: 100%;
+    top: 50%;
+  }
+
+  .dialog::after{
+    border-color: transparent #f4f4f4 transparent transparent ;
+    margin-top: -4px;
+  }
+  
+  .dialog::before{
+    border-color: transparent #1fb4ab transparent transparent ;
+    margin-top: -8px;
+  }
+
+  .dialog-content {
+    padding: 10px;
+    width: 25vw;
+    height: fit-content;
+  }
+  
+  button {
+    background-color: #06740f;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    margin-top: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  button:hover {
+    background-color: #06510c;
+  }
+  
+  .dialog-content > h2{
+    color: blue;
+    font-size: medium;
+  }
+
+  .dialog-content > p{
+    color: rebeccapurple;
+    font-size: small;
+  }
