@@ -13,25 +13,16 @@
     
   }
 
-  .dialog::after, .dialog::before{
-    right: 100%;
-    top: 50%;
+  #title{
+    opacity: 50%;
+    font-size: large;
+    color: black;
   }
 
-  .dialog::after{
-    border-color: transparent #f4f4f4 transparent transparent ;
-    margin-top: -4px;
-  }
-  
-  .dialog::before{
-    border-color: transparent #1fb4ab transparent transparent ;
-    margin-top: -8px;
-  }
-
-  .dialog-content {
-    padding: 10px;
-    width: 25vw;
-    height: fit-content;
+  #content{
+    opacity: 50%;
+    font-size: medium;
+    color: black;
   }
   
   button {

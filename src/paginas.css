@@ -1,0 +1,25 @@
+.character {
+    position: absolute;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 35vmin;
+    width: 20vmin;
+  }
+
+#tito{
+    left: 200px;
+    bottom: 100px;
+    background-image: url("../src/assets/tito/Tito_01.png");
+}
+
+#itzel{
+    left: 1200px;
+    bottom: 100px;
+    background-image: url("../src/assets/tito/Tito_01.png");
+}
+
+
+  
+  
+  

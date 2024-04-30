@@ -15,11 +15,17 @@
   width: 80vw;
 }
 
+.element_container {
+  display: flex;
+  height: 100%;
+  width: 100%;
+}
+
+/*borrar estos 3 luego */
 .first{
   display: flex;
   height: 100%;
   width: 100%;
-  background-image: url("../src/assets/bg/tribunal_1.png");
   background-color: white;
   background-size: cover;
   flex-direction: column;
