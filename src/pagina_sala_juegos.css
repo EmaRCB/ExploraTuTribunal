@@ -1,13 +1,11 @@
-.pagina_1_container{
+.pagina_sala_juegos_container{
     display: flex;
     height: 100%;
     width: 100%;
-    background-image: url("../src/assets/bg/tribunal_1.png");
+    background-image: url("../src/assets/bg/sala_juegos.png");
     background-color: white;
     background-size: cover;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 }
-
-  

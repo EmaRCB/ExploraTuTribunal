@@ -1,35 +1,57 @@
 import './App.css';
-import './pagina_bienvenida.css';
+import './pagina_sala_juegos.css';
 import './paginas.css';
 import { useState } from 'react';
 import Cookies from 'js-cookie';
 import Dialog from './components/dialog';
 
-function Pagina_Bienvenida() {
+
+function Pagina_Sala_Juegos() {
+
   const [viewIndex, setViewIndex] = useState(0);
   const dialogPages = [
     {
       title: "Tito:",
-      content: "¡Hola Itzel! ¡Bienvenida a nuestro tribunal de justicia! ¿Qué haces acá?",
+      content: "Esta es la sala de juegos. ¡Aquí hay muchos juguetes con los que puedes jugar mientras pasamos al siguiente lugar!",
       character: "Tito"
     },
     {
       title: "Itzel:",
-      content: "Hola, Tito!, Un amiguito sigue un proceso legal y quiero saber cómo es, para poder comprender lo que pasa y ayudarlo!",
+      content: "¡Wow! Me gusta mucho cómo se ve",
+      character: "Itzel"
+    }
+    ,
+    {
+      title: "Tito:",
+      content: "Tenemos muchos juguetes y actividades para que tu amigo se divierta mientras espera",
+      character: "Tito"
+    },
+    {
+      title: "Itzel:",
+      content: "¡Wow! Pero, ¿con quién va a jugar?",
       character: "Itzel"
     },
     {
       title: "Tito:",
-      content: "Hoy vamos a tener una visita especial para que puedan aprender más sobre cómo funciona nuestro sistema legal. ¡Yo te puedo acompañar! ¡Vamos!",
+      content: "¡En este lugar hay muchos mas niñas y niños como tú! Así que no estará solo",
+      character: "Tito"
+    },
+    {
+      title: "Itzel:",
+      content: "¡Qué divertido!",
       character: "Tito"
     },
     {
       title: "Tito:",
-      content: "Aquí se investigan los hechos que se relacionan con delitos de muchos tipos, para garantizar que los ciudadanos, incluyendo niñas y niños, reciban justician cuando han sido victimas de algún delito.",
-      character: "Itzel"
+      content: "Así es. Este lugar esta hecho para hacer tu visita más cómoda.",
+      character: "Tito"
+    },
+    {
+      title: "Tito:",
+      content: "¡Pasemos a la siguiente sala!",
+      character: "Tito"
     }
   ];
-
 
   const toggleDialog = () => {
     setViewIndex((prevIndex) => (prevIndex + 1) % dialogPages.length);
@@ -43,10 +65,10 @@ function Pagina_Bienvenida() {
   };
 
   return (
-    <div className='pagina_1_container'>
-      <div className="character" id='tito'></div>
-      <div className="character" id='itzel'></div>
-      <div className="dialog_box">
+    <div className='pagina_sala_juegos_container'>
+    <div className="character" id='tito'></div>
+    <div className="character" id='itzel'></div>
+    <div className="dialog_box">
         <Dialog
           className="dialog"
           title={dialogPages[viewIndex].title}
@@ -63,4 +85,4 @@ function Pagina_Bienvenida() {
   );
 }
 
-export default Pagina_Bienvenida;
+export default Pagina_Sala_Juegos;

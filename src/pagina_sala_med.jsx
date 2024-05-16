@@ -1,35 +1,57 @@
 import './App.css';
-import './pagina_bienvenida.css';
+import './pagina_sala_med.css';
 import './paginas.css';
 import { useState } from 'react';
 import Cookies from 'js-cookie';
 import Dialog from './components/dialog';
 
-function Pagina_Bienvenida() {
+
+function Pagina_Sala_Medicina() {
+
   const [viewIndex, setViewIndex] = useState(0);
   const dialogPages = [
     {
       title: "Tito:",
-      content: "¡Hola Itzel! ¡Bienvenida a nuestro tribunal de justicia! ¿Qué haces acá?",
+      content: "Bienvenida a la sala de medicina. Aquí estarás con una doctora o un doctor que te van a ayudar.",
       character: "Tito"
     },
     {
       title: "Itzel:",
-      content: "Hola, Tito!, Un amiguito sigue un proceso legal y quiero saber cómo es, para poder comprender lo que pasa y ayudarlo!",
+      content: "Pero me dan miedo venir al doctor. ¡No me gustan las inyecciones!",
       character: "Itzel"
-    },
+    }
+    ,
     {
       title: "Tito:",
-      content: "Hoy vamos a tener una visita especial para que puedan aprender más sobre cómo funciona nuestro sistema legal. ¡Yo te puedo acompañar! ¡Vamos!",
+      content: "No te preocupes Itzel, ¡aquí no ponen inyecciones!",
       character: "Tito"
     },
     {
       title: "Tito:",
-      content: "Aquí se investigan los hechos que se relacionan con delitos de muchos tipos, para garantizar que los ciudadanos, incluyendo niñas y niños, reciban justician cuando han sido victimas de algún delito.",
+      content: "La doctora va a revisar a tu amigo para ver si hay algo que le duele y lo puedan curar.",
+      character: "Tito"
+    },
+    {
+      title: "Itzel:",
+      content: "¡Ah! Es importante",
       character: "Itzel"
+    },
+    {
+      title: "Tito:",
+      content: "Así es. Igual es importante que le digas dónde te duele para saber cómo ayudarte.",
+      character: "Tito"
+    },
+    {
+      title: "Itzel:",
+      content: "¡Entendido!",
+      character: "Itzel"
+    },
+    {
+      title: "Tito:",
+      content: "¡Qué bien! Vamos a explorar otro lugar",
+      character: "Tito"
     }
   ];
-
 
   const toggleDialog = () => {
     setViewIndex((prevIndex) => (prevIndex + 1) % dialogPages.length);
@@ -43,10 +65,10 @@ function Pagina_Bienvenida() {
   };
 
   return (
-    <div className='pagina_1_container'>
-      <div className="character" id='tito'></div>
-      <div className="character" id='itzel'></div>
-      <div className="dialog_box">
+    <div className='pagina_sala_med_container'>
+    <div className="character" id='tito'></div>
+    <div className="character" id='itzel'></div>
+    <div className="dialog_box">
         <Dialog
           className="dialog"
           title={dialogPages[viewIndex].title}
@@ -63,4 +85,4 @@ function Pagina_Bienvenida() {
   );
 }
 
-export default Pagina_Bienvenida;
+export default Pagina_Sala_Medicina;

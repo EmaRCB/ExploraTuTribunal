@@ -4,7 +4,7 @@ import './pasillo.css';
 function Pasillo(){
 
     return(
-        <div className='pagina_container'>
+        <div className='pasillo_container'>
             <div className="character" id='tito'></div>
             <div className="character" id='itzel'></div>
             <div className="dialog_box">

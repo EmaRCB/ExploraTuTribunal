@@ -8,17 +8,43 @@
   }
 
 #tito{
-    left: 200px;
+    left: 100px;
     bottom: 100px;
     background-image: url("../src/assets/tito/Tito_01.png");
 }
 
 #itzel{
-    left: 1200px;
+    right: 100px;
     bottom: 100px;
-    background-image: url("../src/assets/tito/Tito_01.png");
+    background-image: url("../src/assets/tito/Itzel_01.png");
 }
 
+.dialog_box{
+    width: 200px;
+    display: flex;
+    align-items: center;
+    position: absolute;
+    top: 70%;
+  }
+
+.next_button{
+    background-color: green;
+    margin: 0 auto; /* Center the button horizontally */
+    display: block; /* Ensure the button takes up the full width */
+    width: fit-content; /* Set the width to fit the content */
+    padding: 10px 20px; /* Add padding for better visibility */
+    cursor: pointer;
+}
+
+#tito:hover{
+  background-image: url("../src/assets/tito/Tito_02.png");
+  transform: scale(1.15);
+}
+
+#itzel:hover{
+  background-image: url("../src/assets/tito/Itzel_02.png");
+  transform: scale(1.15);
+}
 
   
   

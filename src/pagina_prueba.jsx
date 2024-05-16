@@ -53,19 +53,19 @@ function Pagina_Prueba() {
 
   return (
     <div className='pagina_container'>
-    <div className="character" id='tito'></div>
-    <div className="character" id='itzel'></div>
-    <div className="dialog_box">
-      <Dialog
-            className="dialog"
-            title={dialogPages[viewIndex].title}
-            content={dialogPages[viewIndex].content}
-            character={dialogPages[viewIndex].character}
-            onToggle={toggleView}
-            currentPage={currentPage}
-            pages={dialogPages}
-          />
-    </div>
+      <div className="character" id='tito'></div>
+      <div className="character" id='itzel'></div>
+      <div className="dialog_box">
+        <Dialog
+              className="dialog"
+              title={dialogPages[viewIndex].title}
+              content={dialogPages[viewIndex].content}
+              character={dialogPages[viewIndex].character}
+              onToggle={toggleView}
+              currentPage={currentPage}
+              pages={dialogPages}
+            />
+      </div>
     </div>
   );
 }

@@ -1,8 +1,8 @@
-.pagina_1_container{
+.pagina_sala_med_container{
     display: flex;
     height: 100%;
     width: 100%;
-    background-image: url("../src/assets/bg/tribunal_1.png");
+    background-image: url("../src/assets/bg/sala_medicina.png");
     background-color: white;
     background-size: cover;
     flex-direction: column;
