@@ -4,6 +4,8 @@ import './paginas.css';
 import { useState } from 'react';
 import Cookies from 'js-cookie';
 import Dialog from './components/dialog';
+import itzelVoice from './assets/sounds/itzel_voice.mp3';
+import titoVoice from './assets/sounds/tito_voice.mp3';
 
 
 function Pagina_Sala_Medicina() {
@@ -64,10 +66,22 @@ function Pagina_Sala_Medicina() {
     setViewIndex(0);
   };
 
+  const handleTitoClick = () => {
+    new Audio(titoVoice).play().catch(error => {
+      console.error('Error playing audio:', error);
+    });
+  };
+
+  const handleItzelClick = () => {
+    new Audio(itzelVoice).play().catch(error => {
+      console.error('Error playing audio:', error);
+    });
+  };
+
   return (
     <div className='pagina_sala_med_container'>
-    <div className="character" id='tito'></div>
-    <div className="character" id='itzel'></div>
+    <div className="character" id='tito' onClick={handleTitoClick}></div>
+    <div className="character" id='itzel' onClick={handleItzelClick}></div>
     <div className="dialog_box">
         <Dialog
           className="dialog"

@@ -4,6 +4,8 @@ import './paginas.css';
 import { useState } from 'react';
 import Cookies from 'js-cookie';
 import Dialog from './components/dialog';
+import itzelVoice from './assets/sounds/itzel_voice.mp3';
+import titoVoice from './assets/sounds/tito_voice.mp3';
 
 
 function Pagina_Sala_Psicologia() {
@@ -68,13 +70,15 @@ function Pagina_Sala_Psicologia() {
   };
 
   const handleTitoClick = () => {
-    let beat = new Audio('https://audio.code.org/win1.mp3');
-    beat.play();
+    new Audio(titoVoice).play().catch(error => {
+      console.error('Error playing audio:', error);
+    });
   };
 
   const handleItzelClick = () => {
-    let beat = new Audio("https://rpg.hamsterrepublic.com/wiki-images/d/d7/Oddbounce.ogg");
-    beat.play();
+    new Audio(itzelVoice).play().catch(error => {
+      console.error('Error playing audio:', error);
+    });
   };
 
   return (

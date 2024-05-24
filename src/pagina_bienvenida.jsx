@@ -4,30 +4,53 @@ import './paginas.css';
 import { useState } from 'react';
 import Cookies from 'js-cookie';
 import Dialog from './components/dialog';
+import itzelVoice from './assets/sounds/itzel_voice.mp3';
+import titoVoice from './assets/sounds/tito_voice.mp3';
 
 function Pagina_Bienvenida() {
   const [viewIndex, setViewIndex] = useState(0);
   const dialogPages = [
     {
       title: "Tito:",
-      content: "¡Hola Itzel! ¡Bienvenida a nuestro tribunal de justicia! ¿Qué haces acá?",
+      content: "¡Hola Itzel! ¡Bienvenida a la Fiscalía General del Estado de Yucatán! ¿Qué haces acá?",
       character: "Tito"
     },
     {
       title: "Itzel:",
-      content: "Hola, Tito!, Un amiguito sigue un proceso legal y quiero saber cómo es, para poder comprender lo que pasa y ayudarlo!",
+      content: "¡Hola Tito! Un amigo está en un proceso legal y quiero saber cómo es, ¡para poder entender lo que pasa y ayudarlo!",
       character: "Itzel"
     },
     {
       title: "Tito:",
-      content: "Hoy vamos a tener una visita especial para que puedan aprender más sobre cómo funciona nuestro sistema legal. ¡Yo te puedo acompañar! ¡Vamos!",
+      content: "¡Yo te puedo acompañar! ¡Vamos! Aquí es donde se hacen cumplir las leyes.",
       character: "Tito"
     },
     {
       title: "Tito:",
-      content: "Aquí se investigan los hechos que se relacionan con delitos de muchos tipos, para garantizar que los ciudadanos, incluyendo niñas y niños, reciban justician cuando han sido victimas de algún delito.",
+      content: "Hoy vamos a tener una visita especial para que puedas aprender más sobre cómo funciona nuestro Sistema Legal.",
+      character: "Tito"
+    },
+    {
+      title: "Tito:",
+      content: "Las leyes, son reglas que las personas tenemos que obedecer, sirven para cuidarnos. Y el Sistema Legal, son todos estos lugares en donde cumplimos las leyes, en donde están todas las personas que nos van a ayudar.",
+      character: "Tito"
+    },
+    {
+      title: "Tito:",
+      content: "Un delito es cuando una persona lastima a una niña o un niño y le hace daño. Este lugar se llama Fiscalía, aquí se investigan los delitos para poder cuidar a las niñas y los niños y que se haga justicia.",
+      character: "Tito"
+    },
+    {
+      title: "Itzel:",
+      content: "¡Way! La Fiscalía muy grande.",
       character: "Itzel"
+    },
+    {
+      title: "Tito:",
+      content: "No te preocupes, no estarás sola. Juntos vamos a ver los diferentes lugares que puedes encontrar aquí y vamos a conocer a las personas que le ayudarán a tu amigo , también vamos a aprender la importancia de la justicia y los derechos que tenemos. ¡Vamos a comenzar esta emocionante aventura!",
+      character: "Tito"
     }
+
   ];
 
 
@@ -36,16 +59,28 @@ function Pagina_Bienvenida() {
   };
 
   const toggleView = () => {
-    alert("Fin.");
+    
     // Reset the dialog index to the first page
     Cookies.set('changeCookie', '1');
     setViewIndex(0);
   };
 
+  const handleTitoClick = () => {
+    new Audio(titoVoice).play().catch(error => {
+      console.error('Error playing audio:', error);
+    });
+  };
+
+  const handleItzelClick = () => {
+    new Audio(itzelVoice).play().catch(error => {
+      console.error('Error playing audio:', error);
+    });
+  };
+
   return (
     <div className='pagina_1_container'>
-      <div className="character" id='tito'></div>
-      <div className="character" id='itzel'></div>
+      <div className="character" id='tito' onClick={handleTitoClick}></div>
+      <div className="character" id='itzel' onClick={handleItzelClick}></div>
       <div className="dialog_box">
         <Dialog
           className="dialog"
@@ -56,9 +91,12 @@ function Pagina_Bienvenida() {
         />
         
         {(viewIndex === dialogPages.length - 1) ? (
-          <button className='next_button' onClick={toggleView}>Finish</button>
+          <button className='next_button' onClick={toggleView}>
+            Finish
+          </button>
         ): <button className='next_button' onClick={toggleDialog}>Next</button>}
       </div>
+      
     </div>
   );
 }

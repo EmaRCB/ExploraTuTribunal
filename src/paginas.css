@@ -7,6 +7,11 @@
     width: 20vmin;
   }
 
+  .sala, .container{
+    height: 100%;
+    width: 100%;
+}
+
 #tito{
     left: 100px;
     bottom: 100px;
