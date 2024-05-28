@@ -21,6 +21,15 @@ function Pasillo() {
         y.style.display = "none";
     }
 
+    function closeRoom() {
+        var salas = document.getElementsByClassName('sala');
+        var pasillo = document.getElementById('pasillo');
+        for (var i = 0; i < salas.length; i++) {
+            salas[i].style.display = 'none';
+        }
+        pasillo.style.display = 'flex';
+    }
+
     const handleTitoClick = () => {
         new Audio(titoVoice).play().catch(error => {
           console.error('Error playing audio:', error);
@@ -57,23 +66,22 @@ function Pasillo() {
             </Swiper>
             </div>
             <div className="sala" id='salaJuegos' style={{ display: "none" }}>
-                <Pagina_Sala_Juegos />
+                <Pagina_Sala_Juegos closeRoom={closeRoom} />
             </div>
             <div className="sala" id='salaOficina' style={{ display: "none" }}>
-                <Pagina_Oficina />
+                <Pagina_Oficina closeRoom={closeRoom} />
             </div>
             <div className="sala" id='salaMedicina' style={{ display: "none" }}>
-                <Pagina_Sala_Medicina />
+                <Pagina_Sala_Medicina closeRoom={closeRoom} />
             </div>
             <div className="sala" id='salaPsic' style={{ display: "none" }}>
-                <Pagina_Sala_Psicologia />
+                <Pagina_Sala_Psicologia closeRoom={closeRoom} />
             </div>
             <div className="sala" id='salaInicial' style={{ display: "none" }}>
-                <Pagina_Bienvenida />
+                <Pagina_Bienvenida closeRoom={closeRoom} />
             </div>
         </div>
     );
 }
 
 export default Pasillo;
-

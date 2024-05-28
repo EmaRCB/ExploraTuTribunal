@@ -2,13 +2,17 @@ import './App.css';
 import './pagina_sala_psic.css';
 import './paginas.css';
 import { useState } from 'react';
+import PropTypes from 'prop-types';
 import Cookies from 'js-cookie';
 import Dialog from './components/dialog';
 import itzelVoice from './assets/sounds/itzel_voice.mp3';
 import titoVoice from './assets/sounds/tito_voice.mp3';
 
 
-function Pagina_Sala_Psicologia() {
+function Pagina_Sala_Psicologia({ closeRoom }) {
+  Pagina_Sala_Psicologia.propTypes = {
+    closeRoom: PropTypes.func.isRequired,
+  };
 
   const [viewIndex, setViewIndex] = useState(0);
   const dialogPages = [
@@ -21,8 +25,7 @@ function Pagina_Sala_Psicologia() {
       title: "Itzel:",
       content: "¿Qué es eso?",
       character: "Itzel"
-    }
-    ,
+    },
     {
       title: "Tito:",
       content: "¡Aquí puedes platicar con una psicóloga! Las psicólogas y psicólogos son personas que platican con niñas y niños como tú, para poder entender qué sienten y cómo ayudarles. ",
@@ -55,7 +58,6 @@ function Pagina_Sala_Psicologia() {
     }
   ];
 
-
   const toggleDialog = () => {
     let beat = new Audio('https://codeskulptor-demos.commondatastorage.googleapis.com/GalaxyInvaders/bonus.wav');
     beat.play();
@@ -83,9 +85,9 @@ function Pagina_Sala_Psicologia() {
 
   return (
     <div className='pagina_sala_psic_container'>
-    <div className="character" id='tito' onClick={handleTitoClick}></div>
-    <div className="character" id='itzel' onClick={handleItzelClick}></div>
-    <div className="dialog_box">
+      <div className="character" id='tito' onClick={handleTitoClick}></div>
+      <div className="character" id='itzel' onClick={handleItzelClick}></div>
+      <div className="dialog_box">
         <Dialog
           className="dialog"
           title={dialogPages[viewIndex].title}
@@ -98,6 +100,7 @@ function Pagina_Sala_Psicologia() {
           <button className='next_button' onClick={toggleView}>Finish</button>
         ): <button className='next_button' onClick={toggleDialog}>Next</button>}
       </div>
+      <button onClick={closeRoom} className='back_to_pasillo'>Back to Pasillo</button>
     </div>
   );
 }

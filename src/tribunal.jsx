@@ -15,13 +15,9 @@ function Tribunal() {
         draggableVisibility: "block"
     };
 
-
-    const handleDragLeave = (targetType, draggedItem) => {
-        console.log("xs");
-        if (targetType !== draggedItem.type) {
-          alert(`Warning: ${draggedItem.type} cannot be dropped here!`);
-        }
-      };
+    const itemEnters = (item) => {
+        alert("Caja de " + item);
+    }
   
     const handleTitoClick = () => {
         new Audio(titoVoice).play().catch(error => {
@@ -93,12 +89,12 @@ function Tribunal() {
         <div className="tribunal-container">
             <div className="tribu-item">
                 <DropTarget
-                id="my_target_juez"
-                targetKey="juez_target"
-                onHit={() => alert("Caja de juez")}
-                onDragLeave={(e) => handleDragLeave("Juez", e.dragData)}
-                >
-                    
+                    id="my_target"
+                    targetKey="juez_target"
+                    onHit={function () {
+                        alert("Caja de juez");
+                    }}
+                    >
                     <img
                         src={blank}
                         height="150px"
