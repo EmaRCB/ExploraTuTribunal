@@ -3,10 +3,11 @@ import { useState, useEffect } from 'react';
 import Cookies from 'js-cookie';
 import Pagina_Bienvenida from './pagina_bienvenida';
 import Pasillo from './pasillo';
+import Tribunal from './tribunal';
 
 
 function App() {
-  const [viewIndex, setViewIndex] = useState(0);
+  const [viewIndex, setViewIndex] = useState(2);
   
 
   useEffect(() => {
@@ -42,6 +43,13 @@ function App() {
           (
             <div className='element_container'>
               <Pasillo/>
+            </div>
+          )    
+        }
+        {viewIndex === 2 && 
+          (
+            <div className='element_container'>
+              <Tribunal/>
             </div>
           )    
         }

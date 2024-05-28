@@ -1,0 +1,31 @@
+.pagina_1_container{
+    display: flex;
+    height: 100%;
+    width: 100%;
+    background-image: url(./assets/bg/tribunal/TA_Escenarios-07.png);
+    background-color: white;
+    background-size: cover;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#juez, #abogado, #policia, #testigo{
+  right: 100px;
+  bottom: 100px;
+}
+
+.tribunal-container {
+    display: grid;
+    height: 100%;
+    width: 100%;
+    grid-template-columns: auto auto auto;
+  }
+
+.tribu-item {
+    margin: 50px 0px 0px 50px;
+    /*border: 1px solid rgba(0, 0, 0, 0.8);
+    padding: 20px;*/
+    font-size: 30px;
+    text-align: center;
+  }
