@@ -7,7 +7,7 @@ import Tribunal from './tribunal';
 
 
 function App() {
-  const [viewIndex, setViewIndex] = useState(1);
+  const [viewIndex, setViewIndex] = useState(2);
   
 
   useEffect(() => {
