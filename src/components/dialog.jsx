@@ -14,7 +14,7 @@ const Dialog = ({ title, content, character }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const openDialog = () => {
-    let beat = new Audio('https://codeskulptor-demos.commondatastorage.googleapis.com/GalaxyInvaders/bonus.wav');
+    let beat = new Audio('https://commondatastorage.googleapis.com/codeskulptor-assets/week7-brrring.m4a');
     beat.play();
     setIsOpen(true);
   };

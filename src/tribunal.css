@@ -10,6 +10,18 @@
     justify-content: center;
 }
 
+.description_box{
+  position: absolute;
+  bottom: 20vh;
+  padding: 1vw;
+  width: 30vw;
+  height: fit-content;
+  background-color: #06740f;
+  opacity: 90%;
+  font-size: medium;
+  color: rgb(255, 255, 255);
+}
+
 #juez, #abogado, #policia, #testigo{
   right: 100px;
   bottom: 100px;

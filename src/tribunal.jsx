@@ -113,44 +113,43 @@ function Tribunal() {
     ];
 
     const toggleDialog1 = () => {
-        let beat = new Audio('https://codeskulptor-demos.commondatastorage.googleapis.com/GalaxyInvaders/bonus.wav');
+        let beat = new Audio('https://commondatastorage.googleapis.com/codeskulptor-assets/week7-brrring.m4a');
         beat.play();
         console.log(viewPage);
         setPageIndex((prevDialog) => (prevDialog + 1) % dialogPages1.length);
       };
 
     const toggleDialog2 = () => {
-        let beat = new Audio('https://codeskulptor-demos.commondatastorage.googleapis.com/GalaxyInvaders/bonus.wav');
+        let beat = new Audio('https://commondatastorage.googleapis.com/codeskulptor-assets/week7-brrring.m4a');
         beat.play();
         console.log(viewPage);
         setPageIndex((prevDialog) => (prevDialog + 1) % dialogPages2.length);
       };
     
       const toggleDialog3 = () => {
-        let beat = new Audio('https://codeskulptor-demos.commondatastorage.googleapis.com/GalaxyInvaders/bonus.wav');
+        let beat = new Audio('https://commondatastorage.googleapis.com/codeskulptor-assets/week7-brrring.m4a');
         beat.play();
         console.log(viewPage);
         setPageIndex((prevDialog) => (prevDialog + 1) % dialogPages3.length);
       };
     
       const toggleDialog4 = () => {
-        let beat = new Audio('https://codeskulptor-demos.commondatastorage.googleapis.com/GalaxyInvaders/bonus.wav');
+        let beat = new Audio('https://commondatastorage.googleapis.com/codeskulptor-assets/week7-brrring.m4a');
         beat.play();
         console.log(viewPage);
         setPageIndex((prevDialog) => (prevDialog + 1) % dialogPages4.length);
       };
     
       const toggleDialog5 = () => {
-        let beat = new Audio('https://codeskulptor-demos.commondatastorage.googleapis.com/GalaxyInvaders/bonus.wav');
+        let beat = new Audio('https://commondatastorage.googleapis.com/codeskulptor-assets/week7-brrring.m4a');
         beat.play();
         console.log(viewPage);
         setPageIndex((prevDialog) => (prevDialog + 1) % dialogPages5.length);
       };
     
     const toggleView = () => {
-        alert("Fin.");
         console.log(viewPage);
-        setViewIndex((prevIndex) => (prevIndex + 1) % 8);
+        setViewIndex((prevIndex) => (prevIndex + 1) % 9);
     };
 
     const state = {
@@ -160,8 +159,10 @@ function Tribunal() {
     const itemEnters = (item) => {
         alert("Caja de " + item);
         setPageIndex(0);
+        let beat = new Audio('http://starmen.net/mother1/music/08%20-%20MOTHER%20-%20You%20Won.mp3');
+        beat.play();
         console.log(viewPage);
-        setViewIndex((prevIndex) => (prevIndex + 1) % 8);
+        setViewIndex((prevIndex) => (prevIndex + 1) % 9);
     }
   
     const handleTitoClick = () => {
@@ -193,8 +194,8 @@ function Tribunal() {
                 />
                 
                 {(viewPage === dialogPages1.length - 1) ? (
-                <button className='next_button' onClick={toggleView}>Finish</button>
-                ): <button className='next_button' onClick={toggleDialog1}>Next</button>}
+                <button className='next_button' onClick={toggleView}>Comenzar</button>
+                ): <button className='next_button' onClick={toggleDialog1}>Siguiente</button>}
             </div>
           </div>
           
@@ -203,7 +204,12 @@ function Tribunal() {
           (
             <div className='story_container'>
                 <div className="character" id='tito' onClick={handleTitoClick}></div>
+                <div className='description_box'>
+                    <p>La primera persona es el Juez, es muy importante y su trabajo es ver que el juicio se haga con respeto y se cumpla la Ley. El Juez va a decidir qué hacer para ayudar a tu amigo y también van a decir qué hacer con la persona a quien están acusando, él escucha todas las pruebas y luego decide si la persona acusada es culpable o no.</p>
+                    <h3>¿En qué parte de la sala ponemos al Juez?</h3>
+                </div>
                 <div className='character' id='juez' style={{ display: "block" }}>
+                
                     <DragDropContainer
                         targetKey="juez_target"
                         style={{ display: state.draggableVisibility }}
@@ -245,6 +251,10 @@ function Tribunal() {
           (
             <div className='story_container'>
                 <div className="character" id='tito' onClick={handleTitoClick}></div>
+                <div className='description_box'>
+                    <p>¡Esta persona es un abogado! El abogado es alguien que ayuda a las personas a entender y resolver problemas legales. Las abogadas y los abogados saben mucho acerca de las leyes y se aseguran de que se trate de manera justa a las personas.</p>
+                    <h3>¿En qué parte de la sala ponemos al Abogado?</h3>
+                </div>
                 <div className='character' id='abogado' style={{ display: "block" }}>
                     <DragDropContainer
                         targetKey="abogado_target"
@@ -287,6 +297,10 @@ function Tribunal() {
           (
             <div className='story_container'>
                 <div className="character" id='tito' onClick={handleTitoClick}></div>
+                <div className='description_box'>
+                    <p>Esta persona ayuda al juez a cuidar el Tribunal. Un policía es una persona que ayuda a mantener a la gente segura y está ahí para ayudar si alguien tiene un problema.</p>
+                    <h3>¿En qué parte de la sala ponemos al policía?</h3>
+                </div>
                 <div className='character' id='policia' style={{ display: "block" }}>
                     <DragDropContainer
                         targetKey="policia_target"
@@ -329,6 +343,10 @@ function Tribunal() {
           (
             <div className='story_container'>
                 <div className="character" id='tito' onClick={handleTitoClick}></div>
+                <div className='description_box'>
+                    <p>Esta persona es un testigo. El testigo es alguien que sabe lo que les pasó a las niñas y niños que vienen a Juicio, esta persona promete que va a decir la verdad, y le cuenta todo lo que sabe al Juez.</p>
+                    <h3>¿En dónde podemos poner a esta persona?</h3>
+                </div>
                 <div className='character' id='testigo' style={{ display: "block" }}>
                     <DragDropContainer
                         targetKey="testigo_target"
