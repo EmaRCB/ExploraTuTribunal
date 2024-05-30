@@ -47,7 +47,7 @@ function Pagina_Bienvenida({nextRoom}) {
     },
     {
       title: "Itzel:",
-      content: "¡Way! La Fiscalía muy grande.",
+      content: "¡Uay! La Fiscalía muy grande.",
       character: "Itzel"
     },
     {

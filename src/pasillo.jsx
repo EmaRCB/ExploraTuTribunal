@@ -20,8 +20,11 @@ function Pasillo() {
         var tito = document.getElementById('tito');
         var itzel = document.getElementById('itzel');
         var y = document.getElementById("pasillo");
+        var text = document.getElementById("box");
+        
         x.style.display = "flex";
         y.style.display = "none";
+        text.style.display = "none";
         tito.style.display = "none";
         itzel.style.display = "none";
     }
@@ -49,9 +52,11 @@ function Pasillo() {
 
     return (
         <div className='container'>
+            <div className='box' id='box'><p>¡Explora el tribunal! Da click en cualquier puerta para entrar a la habitación.</p></div>
             <div className="character" id='tito' onClick={handleTitoClick}></div>
             <div className="character" id='itzel' onClick={handleItzelClick}></div>
             <div className='pasillo_container' id='pasillo'>
+        
             <Swiper className="mySwiper">
                 <SwiperSlide className='room_container'>
                     <button className='buttonDoor' onClick={() => openRoom('salaJuegos')}>Sala de juegos</button>
@@ -69,7 +74,7 @@ function Pasillo() {
                     <button className='buttonDoor' onClick={() => openRoom('tribunalJusticia')}>Tribunal de Justicia</button>
                 </SwiperSlide>
                 <SwiperSlide>
-                    <button className='buttonDoor' onClick={() => openRoom('salaInicial')}>Volver al inicio</button>
+                    <button className='buttonDoor' onClick={() => openRoom('salaInicial')}>Salir</button>
                 </SwiperSlide>
             </Swiper>
             </div>

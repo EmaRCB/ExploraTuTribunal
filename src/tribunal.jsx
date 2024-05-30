@@ -164,7 +164,7 @@ function Tribunal({ closeRoom }) {
     };
 
     const itemEnters = (item) => {
-        //alert("Caja de " + item);
+        console.log("Caja de " + item);
         setPageIndex(0);
         let beat = new Audio('http://starmen.net/mother1/music/08%20-%20MOTHER%20-%20You%20Won.mp3');
         beat.play();
@@ -186,10 +186,10 @@ function Tribunal({ closeRoom }) {
 
   return (
     <div className='tribunal_container'>
-
+        
+    <Lupa sala="Tribunal"></Lupa>
         {viewIndex === 0 && (
-          <div className='story_container'>
-            <Lupa sala="Tribunal"></Lupa>
+          <div className='trib_story_container' id='trib_story_view0'>
             <div className="character" id='tito' onClick={handleTitoClick}></div>
             <div className="character" id='itzel' onClick={handleItzelClick}></div>
             <div className="dialog_box">
@@ -210,7 +210,7 @@ function Tribunal({ closeRoom }) {
         )}
         {viewIndex === 1 && 
           (
-            <div className='story_container'>
+            <div className='trib_story_container' id='trib_story_view1'>
                 <div className="character" id='tito' onClick={handleTitoClick}></div>
                 <div className='description_box'>
                     <p>La primera persona es el Juez, es muy importante y su trabajo es ver que el juicio se haga con respeto y se cumpla la Ley. El Juez va a decidir qué hacer para ayudar a tu amigo y también van a decir qué hacer con la persona a quien están acusando, él escucha todas las pruebas y luego decide si la persona acusada es culpable o no.</p>
@@ -231,201 +231,7 @@ function Tribunal({ closeRoom }) {
                     />
                     </DragDropContainer>
                 </div>
-            </div>
-          )    
-        }
-        {viewIndex === 2 && 
-          (
-            <div className='story_container'>
-            <div className="character" id='tito' onClick={handleTitoClick}></div>
-            <div className="character" id='itzel' onClick={handleItzelClick}></div>
-            <div className="dialog_box">
-                <Dialog
-                className="dialog"
-                title={dialogPages2[viewPage].title}
-                content={dialogPages2[viewPage].content}
-                character={dialogPages2[viewPage].character}
-                onToggle={toggleDialog2}
-                />
-                
-                {(viewPage === dialogPages2.length - 1) ? (
-                <button className='next_button' onClick={toggleView}>Finish</button>
-                ): <button className='next_button' onClick={toggleDialog2}>Next</button>}
-            </div>
-          </div>
-          )    
-        }
-        {viewIndex === 3 && 
-          (
-            <div className='story_container'>
-                <div className="character" id='tito' onClick={handleTitoClick}></div>
-                <div className='description_box'>
-                    <p>¡Esta persona es un abogado! El abogado es alguien que ayuda a las personas a entender y resolver problemas legales. Las abogadas y los abogados saben mucho acerca de las leyes y se aseguran de que se trate de manera justa a las personas.</p>
-                    <h3>¿En qué parte de la sala ponemos al Abogado?</h3>
-                </div>
-                <div className='character' id='abogado' style={{ display: "block" }}>
-                    <DragDropContainer
-                        targetKey="abogado_target"
-                        style={{ display: state.draggableVisibility }}
-                        dropData={{ type: "Abogado" }}
-                        
-                        >
-                    <img
-                        src={Abogado}
-                        width="100px"
-                        alt=""
-                    />
-                    </DragDropContainer>
-                </div>
-            </div>
-          )    
-        }
-        {viewIndex === 4 && 
-          (
-            <div className='story_container'>
-            <div className="character" id='tito' onClick={handleTitoClick}></div>
-            <div className="character" id='itzel' onClick={handleItzelClick}></div>
-            <div className="dialog_box">
-                <Dialog
-                className="dialog"
-                title={dialogPages3[viewPage].title}
-                content={dialogPages3[viewPage].content}
-                character={dialogPages3[viewPage].character}
-                onToggle={toggleDialog3}
-                />
-                
-                {(viewPage === dialogPages3.length - 1) ? (
-                <button className='next_button' onClick={toggleView}>Finish</button>
-                ): <button className='next_button' onClick={toggleDialog3}>Next</button>}
-            </div>
-          </div>
-          )    
-        }
-        {viewIndex === 5 && 
-          (
-            <div className='story_container'>
-                <div className="character" id='tito' onClick={handleTitoClick}></div>
-                <div className='description_box'>
-                    <p>Esta persona ayuda al juez a cuidar el Tribunal. Un policía es una persona que ayuda a mantener a la gente segura y está ahí para ayudar si alguien tiene un problema.</p>
-                    <h3>¿En qué parte de la sala ponemos al policía?</h3>
-                </div>
-                <div className='character' id='policia' style={{ display: "block" }}>
-                    <DragDropContainer
-                        targetKey="policia_target"
-                        style={{ display: state.draggableVisibility }}
-                        dropData={{ type: "Policia" }}
-                        
-                        >
-                    <img
-                        src={Policia}
-                        width="100px"
-                        alt=""
-                    />
-                    </DragDropContainer>
-                </div>
-            </div>
-          )    
-        }
-        {viewIndex === 6 && 
-          (
-            <div className='story_container'>
-            <div className="character" id='tito' onClick={handleTitoClick}></div>
-            <div className="character" id='itzel' onClick={handleItzelClick}></div>
-            <div className="dialog_box">
-                <Dialog
-                className="dialog"
-                title={dialogPages4[viewPage].title}
-                content={dialogPages4[viewPage].content}
-                character={dialogPages4[viewPage].character}
-                onToggle={toggleDialog4}
-                />
-                
-                {(viewPage === dialogPages4.length - 1) ? (
-                <button className='next_button' onClick={toggleView}>Finish</button>
-                ): <button className='next_button' onClick={toggleDialog4}>Next</button>}
-            </div>
-          </div>
-          )    
-        }
-        {viewIndex === 7 && 
-          (
-            <div className='story_container'>
-                <div className="character" id='tito' onClick={handleTitoClick}></div>
-                <div className='description_box'>
-                    <p>Esta persona es un testigo. El testigo es alguien que sabe lo que les pasó a las niñas y niños que vienen a Juicio, esta persona promete que va a decir la verdad, y le cuenta todo lo que sabe al Juez.</p>
-                    <h3>¿En dónde podemos poner a esta persona?</h3>
-                </div>
-                <div className='character' id='testigo' style={{ display: "block" }}>
-                    <DragDropContainer
-                        targetKey="testigo_target"
-                        style={{ display: state.draggableVisibility }}
-                        dropData={{ type: "Testigo" }}
-                        
-                        >
-                    <img
-                        src={Testigo}
-                        width="100px"
-                        alt=""
-                    />
-                    </DragDropContainer>
-                </div>
-            </div>
-          )    
-        }
-        {viewIndex === 8 && 
-          (
-            <div className='story_container'>
-            <div className="character" id='tito' onClick={handleTitoClick}></div>
-            <div className="character" id='itzel' onClick={handleItzelClick}></div>
-            <div className="dialog_box">
-                <Dialog
-                className="dialog"
-                title={dialogPages5[viewPage].title}
-                content={dialogPages5[viewPage].content}
-                character={dialogPages5[viewPage].character}
-                onToggle={toggleDialog5}
-                />
-                
-                {(viewPage === dialogPages5.length - 1) ? (
-                <button onClick={closeRoom} className='next_button'>Volver</button>
-                ): <button className='next_button' onClick={toggleDialog5}>Next</button>}
-            </div>
-          </div>
-          )    
-        }
-        
-        
-        
-
-        <div className='character' id='policia' style={{ display: "none" }}>
-            <DragDropContainer
-                targetKey="policia_target"
-                style={{ display: state.draggableVisibility }}
-                dropData={{ type: "Policia" }}
-                >
-            <img
-                src={Policia}
-                width="100px"
-                alt=""
-            />
-            </DragDropContainer>
-        </div>
-
-        <div className='character' id='testigo' style={{ display: "none" }}>
-            <DragDropContainer
-                targetKey="testigo_target"
-                style={{ display: state.draggableVisibility }}
-                dropData={{ type: "Testigo" }}
-                >
-            <img
-                src={Testigo}
-                width="100px"
-                alt=""
-            />
-            </DragDropContainer>
-        </div>
-
-        <div className="tribunal-container">
+                <div className="tribunal-grid">
             <div className="tribu-item">
                 <DropTarget
                     id="my_target"
@@ -570,6 +376,605 @@ function Tribunal({ closeRoom }) {
                     />
                 </DropTarget></div>   
         </div>
+            </div>
+          )    
+        }
+        {viewIndex === 2 && 
+          (
+            <div className='trib_story_container' id='trib_story_view2'>
+            <div className="character" id='tito' onClick={handleTitoClick}></div>
+            <div className="character" id='itzel' onClick={handleItzelClick}></div>
+            <div className="dialog_box">
+                <Dialog
+                className="dialog"
+                title={dialogPages2[viewPage].title}
+                content={dialogPages2[viewPage].content}
+                character={dialogPages2[viewPage].character}
+                onToggle={toggleDialog2}
+                />
+                
+                {(viewPage === dialogPages2.length - 1) ? (
+                <button className='next_button' onClick={toggleView}>Continuar</button>
+                ): <button className='next_button' onClick={toggleDialog2}>Next</button>}
+            </div>
+          </div>
+          )    
+        }
+        {viewIndex === 3 && 
+          (
+            <div className='trib_story_container' id='trib_story_view3'>
+                <div className="character" id='tito' onClick={handleTitoClick}></div>
+                <div className='description_box'>
+                    <p>¡Esta persona es un abogado! El abogado es alguien que ayuda a las personas a entender y resolver problemas legales. Las abogadas y los abogados saben mucho acerca de las leyes y se aseguran de que se trate de manera justa a las personas.</p>
+                    <h3>¿En qué parte de la sala ponemos al Abogado?</h3>
+                </div>
+                <div className='character' id='abogado' style={{ display: "block" }}>
+                    <DragDropContainer
+                        targetKey="abogado_target"
+                        style={{ display: state.draggableVisibility }}
+                        dropData={{ type: "Abogado" }}
+                        
+                        >
+                    <img
+                        src={Abogado}
+                        width="100px"
+                        alt=""
+                    />
+                    </DragDropContainer>
+                </div>
+                <div className="tribunal-grid">
+            <div className="tribu-item">
+                <DropTarget
+                    id="my_target"
+                    targetKey="juez_target"
+                    onHit={function () {
+                        itemEnters('juez');
+                        
+                    }}
+                    >
+                    <img
+                        src={blank}
+                        height="150px"
+                        width="150px"
+                        alt=""
+                    />
+                </DropTarget>
+            </div>
+            <div className="tribu-item">
+            <DropTarget
+                    id="my_target"
+                    targetKey="abogado_target"
+                    onHit={function () {
+                        itemEnters('abogado');
+                    }}
+                    >
+                    <img
+                        src={blank}
+                        height="150px"
+                        width="150px"
+                        alt=""
+                    />
+                </DropTarget>
+            </div>
+            <div className="tribu-item">
+            <DropTarget
+                    id="my_target"
+                    targetKey="testigo_target"
+                    onHit={function () {
+                        itemEnters('testigo');
+                    }}
+                    >
+                    <img
+                        src={blank}
+                        height="150px"
+                        width="150px"
+                        alt=""
+                    />
+                </DropTarget></div>  
+                <div className="tribu-item">
+                <DropTarget
+                    id="my_target"
+                    targetKey="policia_target"
+                    onHit={function () {
+                        itemEnters('policia');
+                    }}
+                    >
+                    <img
+                        src={blank}
+                        height="150px"
+                        width="150px"
+                        alt=""
+                    />
+                </DropTarget>
+            </div>
+            <div className="tribu-item">
+            <DropTarget
+                    id="my_target"
+                    targetKey="abogado_target"
+                    onHit={function () {
+                        itemEnters('abogado');
+                    }}
+                    >
+                    <img
+                        src={blank}
+                        height="150px"
+                        width="150px"
+                        alt=""
+                    />
+                </DropTarget>
+            </div>
+            <div className="tribu-item">
+            <DropTarget
+                    id="my_target"
+                    targetKey="testigo_target"
+                    onHit={function () {
+                        itemEnters('testigo');
+                    }}
+                    >
+                    <img
+                        src={blank}
+                        height="100px"
+                        width="150px"
+                        alt=""
+                        
+                    />
+                </DropTarget></div>   
+                <div className="tribu-item">
+                <DropTarget
+                    id="my_target"
+                    targetKey="policia_target"
+                    onHit={function () {
+                        itemEnters('policia');
+                    }}
+                    >
+                    <img
+                        src={blank}
+                        height="100px"
+                        width="150px"
+                        alt=""
+                    />
+                </DropTarget>
+            </div>
+            <div className="tribu-item">
+            <DropTarget
+                    id="my_target"
+                    targetKey="foo"
+                    onHit={function () {
+                        alert("Caja 8");
+                    }}
+                    >
+                    <img
+                        src={blank}
+                        height="100px"
+                        width="150px"
+                        alt=""
+                    />
+                </DropTarget>
+            </div>
+            <div className="tribu-item">
+            <DropTarget
+                    id="my_target"
+                    targetKey="foo"
+                    onHit={function () {
+                        alert("Caja 9");
+                    }}
+                    >
+                    <img
+                        src={blank}
+                        height="100px"
+                        width="150px"
+                        alt=""
+                    />
+                </DropTarget></div>   
+        </div>
+            </div>
+          )    
+        }
+        {viewIndex === 4 && 
+          (
+            <div className='trib_story_container' id='trib_story_view4'>
+            <div className="character" id='tito' onClick={handleTitoClick}></div>
+            <div className="character" id='itzel' onClick={handleItzelClick}></div>
+            <div className="dialog_box">
+                <Dialog
+                className="dialog"
+                title={dialogPages3[viewPage].title}
+                content={dialogPages3[viewPage].content}
+                character={dialogPages3[viewPage].character}
+                onToggle={toggleDialog3}
+                />
+                
+                {(viewPage === dialogPages3.length - 1) ? (
+                <button className='next_button' onClick={toggleView}>Finish</button>
+                ): <button className='next_button' onClick={toggleDialog3}>Next</button>}
+            </div>
+          </div>
+          )    
+        }
+        {viewIndex === 5 && 
+          (
+            <div className='trib_story_container' id='trib_story_view5'>
+                <div className="character" id='tito' onClick={handleTitoClick}></div>
+                <div className='description_box'>
+                    <p>Esta persona ayuda al juez a cuidar el Tribunal. Un policía es una persona que ayuda a mantener a la gente segura y está ahí para ayudar si alguien tiene un problema.</p>
+                    <h3>¿En qué parte de la sala ponemos al policía?</h3>
+                </div>
+                <div className='character' id='policia' style={{ display: "block" }}>
+                    <DragDropContainer
+                        targetKey="policia_target"
+                        style={{ display: state.draggableVisibility }}
+                        dropData={{ type: "Policia" }}
+                        
+                        >
+                    <img
+                        src={Policia}
+                        width="100px"
+                        alt=""
+                    />
+                    </DragDropContainer>
+                </div>
+                <div className="tribunal-grid">
+            <div className="tribu-item">
+                <DropTarget
+                    id="my_target"
+                    targetKey="juez_target"
+                    onHit={function () {
+                        itemEnters('juez');
+                        
+                    }}
+                    >
+                    <img
+                        src={blank}
+                        height="150px"
+                        width="150px"
+                        alt=""
+                    />
+                </DropTarget>
+            </div>
+            <div className="tribu-item">
+            <DropTarget
+                    id="my_target"
+                    targetKey="abogado_target"
+                    onHit={function () {
+                        itemEnters('abogado');
+                    }}
+                    >
+                    <img
+                        src={blank}
+                        height="150px"
+                        width="150px"
+                        alt=""
+                    />
+                </DropTarget>
+            </div>
+            <div className="tribu-item">
+            <DropTarget
+                    id="my_target"
+                    targetKey="testigo_target"
+                    onHit={function () {
+                        itemEnters('testigo');
+                    }}
+                    >
+                    <img
+                        src={blank}
+                        height="150px"
+                        width="150px"
+                        alt=""
+                    />
+                </DropTarget></div>  
+                <div className="tribu-item">
+                <DropTarget
+                    id="my_target"
+                    targetKey="policia_target"
+                    onHit={function () {
+                        itemEnters('policia');
+                    }}
+                    >
+                    <img
+                        src={blank}
+                        height="150px"
+                        width="150px"
+                        alt=""
+                    />
+                </DropTarget>
+            </div>
+            <div className="tribu-item">
+            <DropTarget
+                    id="my_target"
+                    targetKey="abogado_target"
+                    onHit={function () {
+                        itemEnters('abogado');
+                    }}
+                    >
+                    <img
+                        src={blank}
+                        height="150px"
+                        width="150px"
+                        alt=""
+                    />
+                </DropTarget>
+            </div>
+            <div className="tribu-item">
+            <DropTarget
+                    id="my_target"
+                    targetKey="testigo_target"
+                    onHit={function () {
+                        itemEnters('testigo');
+                    }}
+                    >
+                    <img
+                        src={blank}
+                        height="100px"
+                        width="150px"
+                        alt=""
+                        
+                    />
+                </DropTarget></div>   
+                <div className="tribu-item">
+                <DropTarget
+                    id="my_target"
+                    targetKey="policia_target"
+                    onHit={function () {
+                        itemEnters('policia');
+                    }}
+                    >
+                    <img
+                        src={blank}
+                        height="100px"
+                        width="150px"
+                        alt=""
+                    />
+                </DropTarget>
+            </div>
+            <div className="tribu-item">
+            <DropTarget
+                    id="my_target"
+                    targetKey="foo"
+                    onHit={function () {
+                        alert("Caja 8");
+                    }}
+                    >
+                    <img
+                        src={blank}
+                        height="100px"
+                        width="150px"
+                        alt=""
+                    />
+                </DropTarget>
+            </div>
+            <div className="tribu-item">
+            <DropTarget
+                    id="my_target"
+                    targetKey="foo"
+                    onHit={function () {
+                        alert("Caja 9");
+                    }}
+                    >
+                    <img
+                        src={blank}
+                        height="100px"
+                        width="150px"
+                        alt=""
+                    />
+                </DropTarget></div>   
+        </div>
+            </div>
+          )    
+        }
+        {viewIndex === 6 && 
+          (
+            <div className='trib_story_container' id='trib_story_view6'>
+            <div className="character" id='tito' onClick={handleTitoClick}></div>
+            <div className="character" id='itzel' onClick={handleItzelClick}></div>
+            <div className="dialog_box">
+                <Dialog
+                className="dialog"
+                title={dialogPages4[viewPage].title}
+                content={dialogPages4[viewPage].content}
+                character={dialogPages4[viewPage].character}
+                onToggle={toggleDialog4}
+                />
+                
+                {(viewPage === dialogPages4.length - 1) ? (
+                <button className='next_button' onClick={toggleView}>Finish</button>
+                ): <button className='next_button' onClick={toggleDialog4}>Next</button>}
+            </div>
+          </div>
+          )    
+        }
+        {viewIndex === 7 && 
+          (
+            <div className='trib_story_container' id='trib_story_view7'>
+                <div className="character" id='tito' onClick={handleTitoClick}></div>
+                <div className='description_box'>
+                    <p>Esta persona es un testigo. El testigo es alguien que sabe lo que les pasó a las niñas y niños que vienen a Juicio, esta persona promete que va a decir la verdad, y le cuenta todo lo que sabe al Juez.</p>
+                    <h3>¿En dónde podemos poner a esta persona?</h3>
+                </div>
+                <div className='character' id='testigo' style={{ display: "block" }}>
+                    <DragDropContainer
+                        targetKey="testigo_target"
+                        style={{ display: state.draggableVisibility }}
+                        dropData={{ type: "Testigo" }}
+                        
+                        >
+                    <img
+                        src={Testigo}
+                        width="100px"
+                        alt=""
+                    />
+                    </DragDropContainer>
+                </div>
+                <div className="tribunal-grid">
+            <div className="tribu-item">
+                <DropTarget
+                    id="my_target"
+                    targetKey="juez_target"
+                    onHit={function () {
+                        itemEnters('juez');
+                        
+                    }}
+                    >
+                    <img
+                        src={blank}
+                        height="150px"
+                        width="150px"
+                        alt=""
+                    />
+                </DropTarget>
+            </div>
+            <div className="tribu-item">
+            <DropTarget
+                    id="my_target"
+                    targetKey="abogado_target"
+                    onHit={function () {
+                        itemEnters('abogado');
+                    }}
+                    >
+                    <img
+                        src={blank}
+                        height="150px"
+                        width="150px"
+                        alt=""
+                    />
+                </DropTarget>
+            </div>
+            <div className="tribu-item">
+            <DropTarget
+                    id="my_target"
+                    targetKey="testigo_target"
+                    onHit={function () {
+                        itemEnters('testigo');
+                    }}
+                    >
+                    <img
+                        src={blank}
+                        height="150px"
+                        width="150px"
+                        alt=""
+                    />
+                </DropTarget></div>  
+                <div className="tribu-item">
+                <DropTarget
+                    id="my_target"
+                    targetKey="policia_target"
+                    onHit={function () {
+                        itemEnters('policia');
+                    }}
+                    >
+                    <img
+                        src={blank}
+                        height="150px"
+                        width="150px"
+                        alt=""
+                    />
+                </DropTarget>
+            </div>
+            <div className="tribu-item">
+            <DropTarget
+                    id="my_target"
+                    targetKey="abogado_target"
+                    onHit={function () {
+                        itemEnters('abogado');
+                    }}
+                    >
+                    <img
+                        src={blank}
+                        height="150px"
+                        width="150px"
+                        alt=""
+                    />
+                </DropTarget>
+            </div>
+            <div className="tribu-item">
+            <DropTarget
+                    id="my_target"
+                    targetKey="testigo_target"
+                    onHit={function () {
+                        itemEnters('testigo');
+                    }}
+                    >
+                    <img
+                        src={blank}
+                        height="100px"
+                        width="150px"
+                        alt=""
+                        
+                    />
+                </DropTarget></div>   
+                <div className="tribu-item">
+                <DropTarget
+                    id="my_target"
+                    targetKey="policia_target"
+                    onHit={function () {
+                        itemEnters('policia');
+                    }}
+                    >
+                    <img
+                        src={blank}
+                        height="100px"
+                        width="150px"
+                        alt=""
+                    />
+                </DropTarget>
+            </div>
+            <div className="tribu-item">
+            <DropTarget
+                    id="my_target"
+                    targetKey="foo"
+                    onHit={function () {
+                        alert("Caja 8");
+                    }}
+                    >
+                    <img
+                        src={blank}
+                        height="100px"
+                        width="150px"
+                        alt=""
+                    />
+                </DropTarget>
+            </div>
+            <div className="tribu-item">
+            <DropTarget
+                    id="my_target"
+                    targetKey="foo"
+                    onHit={function () {
+                        alert("Caja 9");
+                    }}
+                    >
+                    <img
+                        src={blank}
+                        height="100px"
+                        width="150px"
+                        alt=""
+                    />
+                </DropTarget></div>   
+        </div>
+            </div>
+          )    
+        }
+        {viewIndex === 8 && 
+          (
+            <div className='trib_story_container' id='trib_story_view8'>
+            <div className="character" id='tito' onClick={handleTitoClick}></div>
+            <div className="character" id='itzel' onClick={handleItzelClick}></div>
+            <div className="dialog_box">
+                <Dialog
+                className="dialog"
+                title={dialogPages5[viewPage].title}
+                content={dialogPages5[viewPage].content}
+                character={dialogPages5[viewPage].character}
+                onToggle={toggleDialog5}
+                />
+                
+                {(viewPage === dialogPages5.length - 1) ? (
+                <button onClick={closeRoom} className='next_button'>Volver</button>
+                ): <button className='next_button' onClick={toggleDialog5}>Next</button>}
+            </div>
+          </div>
+          )    
+        }
+        
+        
     </div>
   );
 }
