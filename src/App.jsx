@@ -7,7 +7,7 @@ import Tribunal from './tribunal';
 
 
 function App() {
-  const [viewIndex, setViewIndex] = useState(2);
+  const [viewIndex, setViewIndex] = useState(0);
   
 
   useEffect(() => {
@@ -15,6 +15,9 @@ function App() {
   }, []);
 
   
+  function nextRoom() {
+    setViewIndex((prevIndex) => (prevIndex + 1) % 4);
+  }
 
   const toggleView = () => {
     const cookieValue = Cookies.get('changeCookie');
@@ -34,7 +37,7 @@ function App() {
       <header className="game_container">
         {viewIndex === 0 && (
           <div className='element_container'>
-            <Pagina_Bienvenida/>
+            <Pagina_Bienvenida nextRoom={nextRoom}/>
             
           </div>
           

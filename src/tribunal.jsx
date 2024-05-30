@@ -4,6 +4,9 @@ import './paginas.css';
 import { useState } from 'react';
 import { DragDropContainer, DropTarget } from 'react-drag-drop-container';
 import Dialog from './components/dialog';
+import Lupa from './components/lupa';
+import PropTypes from 'prop-types';
+
 import titoVoice from './assets/sounds/tito_voice.mp3';
 import itzelVoice from './assets/sounds/itzel_voice.mp3';
 import blank from './assets/bg/blank.png';
@@ -13,7 +16,11 @@ import Policia from './assets/tito/Policia.png';
 import Testigo from './assets/tito/Testigo.png';
 
 
-function Tribunal() {
+function Tribunal({ closeRoom }) {
+    Tribunal.propTypes = {
+        closeRoom: PropTypes.func.isRequired,
+    };
+
     const [viewIndex, setViewIndex] = useState(0);
     const [viewPage, setPageIndex] = useState(0);
 
@@ -157,7 +164,7 @@ function Tribunal() {
     };
 
     const itemEnters = (item) => {
-        alert("Caja de " + item);
+        //alert("Caja de " + item);
         setPageIndex(0);
         let beat = new Audio('http://starmen.net/mother1/music/08%20-%20MOTHER%20-%20You%20Won.mp3');
         beat.play();
@@ -178,10 +185,11 @@ function Tribunal() {
       };
 
   return (
-    <div className='pagina_1_container'>
+    <div className='tribunal_container'>
 
         {viewIndex === 0 && (
           <div className='story_container'>
+            <Lupa sala="Tribunal"></Lupa>
             <div className="character" id='tito' onClick={handleTitoClick}></div>
             <div className="character" id='itzel' onClick={handleItzelClick}></div>
             <div className="dialog_box">
@@ -379,7 +387,7 @@ function Tribunal() {
                 />
                 
                 {(viewPage === dialogPages5.length - 1) ? (
-                <button className='next_button' onClick={toggleView}>Finish</button>
+                <button onClick={closeRoom} className='next_button'>Volver</button>
                 ): <button className='next_button' onClick={toggleDialog5}>Next</button>}
             </div>
           </div>
@@ -424,6 +432,7 @@ function Tribunal() {
                     targetKey="juez_target"
                     onHit={function () {
                         itemEnters('juez');
+                        
                     }}
                     >
                     <img

@@ -2,13 +2,17 @@ import './App.css';
 import './pagina_oficina.css';
 import './paginas.css';
 import { useState } from 'react';
-import Cookies from 'js-cookie';
+import PropTypes from 'prop-types';
 import Dialog from './components/dialog';
+import Lupa from './components/lupa';
 import itzelVoice from './assets/sounds/itzel_voice.mp3';
 import titoVoice from './assets/sounds/tito_voice.mp3';
 
 
-function Pagina_Oficina() {
+function Pagina_Oficina({ closeRoom }) {
+  Pagina_Oficina.propTypes = {
+    closeRoom: PropTypes.func.isRequired,
+  };
 
   const [viewIndex, setViewIndex] = useState(0);
   const dialogPages = [
@@ -56,13 +60,14 @@ function Pagina_Oficina() {
   ];
 
   const toggleDialog = () => {
+    let beat = new Audio('https://commondatastorage.googleapis.com/codeskulptor-assets/week7-brrring.m4a');
+    beat.play();
     setViewIndex((prevIndex) => (prevIndex + 1) % dialogPages.length);
   };
 
   const toggleView = () => {
-    alert("Fin.");
-    // Reset the dialog index to the first page
-    Cookies.set('changeCookie', '1');
+    let beat = new Audio('https://commondatastorage.googleapis.com/codeskulptor-assets/week7-brrring.m4a');
+    beat.play();
     setViewIndex(0);
   };
 
@@ -80,6 +85,7 @@ function Pagina_Oficina() {
 
   return (
     <div className='pagina_oficina_container'>
+    <Lupa sala="Oficina"></Lupa>
     <div className="character" id='tito' onClick={handleTitoClick}></div>
     <div className="character" id='itzel' onClick={handleItzelClick}></div>
     <div className="dialog_box">
@@ -92,7 +98,7 @@ function Pagina_Oficina() {
         />
         
         {(viewIndex === dialogPages.length - 1) ? (
-          <button className='next_button' onClick={toggleView}>Finish</button>
+          <button onClick={closeRoom} className='next_button'>Volver</button>
         ): <button className='next_button' onClick={toggleDialog}>Next</button>}
       </div>
     </div>

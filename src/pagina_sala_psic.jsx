@@ -3,8 +3,8 @@ import './pagina_sala_psic.css';
 import './paginas.css';
 import { useState } from 'react';
 import PropTypes from 'prop-types';
-import Cookies from 'js-cookie';
 import Dialog from './components/dialog';
+import Lupa from './components/lupa';
 import itzelVoice from './assets/sounds/itzel_voice.mp3';
 import titoVoice from './assets/sounds/tito_voice.mp3';
 
@@ -59,15 +59,14 @@ function Pagina_Sala_Psicologia({ closeRoom }) {
   ];
 
   const toggleDialog = () => {
-    let beat = new Audio('https://codeskulptor-demos.commondatastorage.googleapis.com/GalaxyInvaders/bonus.wav');
+    let beat = new Audio('https://commondatastorage.googleapis.com/codeskulptor-assets/week7-brrring.m4a');
     beat.play();
     setViewIndex((prevIndex) => (prevIndex + 1) % dialogPages.length);
   };
 
   const toggleView = () => {
-    alert("Fin.");
-    // Reset the dialog index to the first page
-    Cookies.set('changeCookie', '1');
+    let beat = new Audio('https://commondatastorage.googleapis.com/codeskulptor-assets/week7-brrring.m4a');
+    beat.play();
     setViewIndex(0);
   };
 
@@ -85,6 +84,7 @@ function Pagina_Sala_Psicologia({ closeRoom }) {
 
   return (
     <div className='pagina_sala_psic_container'>
+      <Lupa sala="Psicologia"></Lupa>
       <div className="character" id='tito' onClick={handleTitoClick}></div>
       <div className="character" id='itzel' onClick={handleItzelClick}></div>
       <div className="dialog_box">
@@ -97,10 +97,10 @@ function Pagina_Sala_Psicologia({ closeRoom }) {
         />
         
         {(viewIndex === dialogPages.length - 1) ? (
-          <button className='next_button' onClick={toggleView}>Finish</button>
+          <button onClick={closeRoom} className='next_button'>Volver</button>
         ): <button className='next_button' onClick={toggleDialog}>Next</button>}
       </div>
-      <button onClick={closeRoom} className='back_to_pasillo'>Back to Pasillo</button>
+      
     </div>
   );
 }

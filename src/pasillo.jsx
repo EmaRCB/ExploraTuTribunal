@@ -11,14 +11,19 @@ import Pagina_Sala_Psicologia from './pagina_sala_psic';
 import Pagina_Oficina from './pagina_oficina';
 import itzelVoice from './assets/sounds/itzel_voice.mp3';
 import titoVoice from './assets/sounds/tito_voice.mp3';
+import Tribunal from './tribunal';
 
 function Pasillo() {
 
     function openRoom(sala) {
         var x = document.getElementById(sala); 
+        var tito = document.getElementById('tito');
+        var itzel = document.getElementById('itzel');
         var y = document.getElementById("pasillo");
         x.style.display = "flex";
         y.style.display = "none";
+        tito.style.display = "none";
+        itzel.style.display = "none";
     }
 
     function closeRoom() {
@@ -61,6 +66,9 @@ function Pasillo() {
                     <button className='buttonDoor' onClick={() => openRoom('salaPsic')}>Sala psicologia</button>
                 </SwiperSlide>
                 <SwiperSlide>
+                    <button className='buttonDoor' onClick={() => openRoom('tribunalJusticia')}>Tribunal de Justicia</button>
+                </SwiperSlide>
+                <SwiperSlide>
                     <button className='buttonDoor' onClick={() => openRoom('salaInicial')}>Volver al inicio</button>
                 </SwiperSlide>
             </Swiper>
@@ -76,6 +84,9 @@ function Pasillo() {
             </div>
             <div className="sala" id='salaPsic' style={{ display: "none" }}>
                 <Pagina_Sala_Psicologia closeRoom={closeRoom} />
+            </div>
+            <div className="sala" id='tribunalJusticia' style={{ display: "none" }}>
+                <Tribunal closeRoom={closeRoom} />
             </div>
             <div className="sala" id='salaInicial' style={{ display: "none" }}>
                 <Pagina_Bienvenida closeRoom={closeRoom} />

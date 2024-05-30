@@ -2,13 +2,18 @@ import './App.css';
 import './pagina_bienvenida.css';
 import './paginas.css';
 import { useState } from 'react';
-import Cookies from 'js-cookie';
+import PropTypes from 'prop-types';
 import Dialog from './components/dialog';
+import Lupa from './components/lupa';
 import itzelVoice from './assets/sounds/itzel_voice.mp3';
 import titoVoice from './assets/sounds/tito_voice.mp3';
 
-function Pagina_Bienvenida() {
+function Pagina_Bienvenida({nextRoom}) {
+  Pagina_Bienvenida.propTypes = {
+    nextRoom: PropTypes.func.isRequired,
+  };
   const [viewIndex, setViewIndex] = useState(0);
+
   const dialogPages = [
     {
       title: "Tito:",
@@ -47,23 +52,30 @@ function Pagina_Bienvenida() {
     },
     {
       title: "Tito:",
-      content: "No te preocupes, no estarás sola. Juntos vamos a ver los diferentes lugares que puedes encontrar aquí y vamos a conocer a las personas que le ayudarán a tu amigo , también vamos a aprender la importancia de la justicia y los derechos que tenemos. ¡Vamos a comenzar esta emocionante aventura!",
+      content: "No te preocupes, no estarás sola. Juntos vamos a ver los diferentes lugares que puedes encontrar aquí y vamos a conocer a las personas que le ayudarán a tu amigo , también vamos a aprender la importancia de la justicia y los derechos que tenemos.",
+      character: "Tito"
+    },
+    {
+      title: "Tito:",
+      content: "¡Vamos a comenzar esta emocionante aventura!",
       character: "Tito"
     }
 
   ];
 
 
-  const toggleDialog = () => {
-    setViewIndex((prevIndex) => (prevIndex + 1) % dialogPages.length);
-  };
 
-  const toggleView = () => {
-    
-    // Reset the dialog index to the first page
-    Cookies.set('changeCookie', '1');
-    setViewIndex(0);
-  };
+const toggleDialog = () => {
+  let beat = new Audio('https://commondatastorage.googleapis.com/codeskulptor-assets/week7-brrring.m4a');
+  beat.play();
+  setViewIndex((prevIndex) => (prevIndex + 1) % dialogPages.length);
+};
+
+const toggleView = () => {
+  let beat = new Audio('https://commondatastorage.googleapis.com/codeskulptor-assets/week7-brrring.m4a');
+  beat.play();
+  setViewIndex(0);
+};
 
   const handleTitoClick = () => {
     new Audio(titoVoice).play().catch(error => {
@@ -79,24 +91,23 @@ function Pagina_Bienvenida() {
 
   return (
     <div className='pagina_1_container'>
-      <div className="character" id='tito' onClick={handleTitoClick}></div>
-      <div className="character" id='itzel' onClick={handleItzelClick}></div>
-      <div className="dialog_box">
-        <Dialog
-          className="dialog"
-          title={dialogPages[viewIndex].title}
-          content={dialogPages[viewIndex].content}
-          character={dialogPages[viewIndex].character}
-          onToggle={toggleView}
-        />
-        
-        {(viewIndex === dialogPages.length - 1) ? (
-          <button className='next_button' onClick={toggleView}>
-            Finish
-          </button>
-        ): <button className='next_button' onClick={toggleDialog}>Next</button>}
+        <Lupa sala="Entrada"></Lupa>
+        <div className="character" id='tito' onClick={handleTitoClick}></div>
+        <div className="character" id='itzel' onClick={handleItzelClick}></div>
+        <div className="dialog_box">
+          <Dialog
+            className="dialog"
+            title={dialogPages[viewIndex].title}
+            content={dialogPages[viewIndex].content}
+            character={dialogPages[viewIndex].character}
+            onToggle={toggleView}
+          />
+          
+          {(viewIndex === dialogPages.length - 1) ? (
+            <button className='next_button' onClick={nextRoom}>Finish</button>
+          ): <button className='next_button' onClick={toggleDialog}>Next</button>}
       </div>
-      
+     
     </div>
   );
 }
