@@ -115,8 +115,10 @@ function Pagina_Sala_Psicologia({ closeRoom }) {
   return (
     <div className='pagina_sala_psic_container'>
       <Lupa sala="Psicologia"></Lupa>
+      <div className="object" id='cojin1'></div>
+      <div className="object" id='cojin2'></div>
       {viewIndex === 0 && (
-      <div className='story_container' id='story_view1'>
+      <div className='story_container' id='psic_story_view1'>
         <div className="character" id='tito' onClick={handleTitoClick}></div>
         <div className="character" id='itzel' onClick={handleItzelClick}></div>
         <div className="dialog_box">
@@ -130,12 +132,12 @@ function Pagina_Sala_Psicologia({ closeRoom }) {
             
             {(viewPage === dialogPages1.length - 1) ? (
                 <button className='next_button' onClick={toggleView}>Comenzar</button>
-                ): <button className='next_button' onClick={toggleDialog1}>Siguiente</button>}
+                ): <button className='next_button' onClick={toggleDialog1}><img src="../imagenes/flecha-verde.png" height={25} alt="flecha" /></button>}
           </div>
       </div>
     )}
     {viewIndex === 1 && (
-      <div className='story_container' id='story_view2'>
+      <div className='story_container' id='psic_story_view2'>
         <div className="character" id='tito' onClick={handleTitoClick}></div>
         <div className='character' id='psicologa' style={{ display: "block" }}>
             <DragDropContainer
@@ -173,7 +175,7 @@ function Pagina_Sala_Psicologia({ closeRoom }) {
       </div>
     )}
     {viewIndex === 2 && (
-      <div className='story_container' id='story_view3'>
+      <div className='story_container' id='psic_story_view3'>
         <div className="character" id='tito' onClick={handleTitoClick}></div>
         <div className="character" id='itzel' onClick={handleItzelClick}></div>
         <div className="dialog_box">
@@ -187,7 +189,7 @@ function Pagina_Sala_Psicologia({ closeRoom }) {
             
             {(viewPage === dialogPages2.length - 1) ? (
                 <button className='next_button' onClick={closeRoom}>Finalizar</button>
-                ): <button className='next_button' onClick={toggleDialog2}>Siguiente</button>}
+                ): <button className='next_button' onClick={toggleDialog2}><img src="../imagenes/flecha-verde.png" height={25} alt="flecha" /></button>}
           </div>
       </div>
     )}

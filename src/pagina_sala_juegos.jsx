@@ -6,8 +6,6 @@ import PropTypes from 'prop-types';
 import Dialog from './components/dialog';
 import itzelVoice from './assets/sounds/itzel_voice.mp3';
 import titoVoice from './assets/sounds/tito_voice.mp3';
-import pelota from './assets/bg/objetos/pelota.png';
-import osoPeluche from './assets/bg/objetos/oso.png';
 
 
 function Pagina_Sala_Juegos({ closeRoom }) {

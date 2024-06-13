@@ -8,6 +8,31 @@
     justify-content: center;
 }
 
+.object{
+    height: 100px;
+    width: 100px;
+}
+
+#cojin1{
+    position: absolute;
+    bottom: 33vh;
+    left: 41vw;
+    background-image: url("./assets/bg/objetos/cojin1.png");
+    background-size: cover;
+}
+
+#cojin2{
+    position: absolute;
+    bottom: 30vh;
+    left: 55vw;
+    background-image: url("./assets/bg/objetos/cojin2.png");
+    background-size: cover;
+}
+
+#cojin1:hover{-webkit-animation:jello-horizontal .9s both;animation:jello-horizontal .9s both}
+
+#cojin2:hover{-webkit-animation:jello-diagonal-1 .8s both;animation:jello-diagonal-1 .8s both}
+
 #psicologa{
     right: 100px;
     bottom: 100px;
@@ -30,24 +55,28 @@
     justify-content: center;
 }
 
-#story_view1{
+#psic_story_view1{
     background-image: url("../src/assets/bg/sala_psicologia.png"); 
     background-color: white;
     background-size: cover;
 }
 
-#story_view2{
+#psic_story_view2{
     background-image: url("../src/assets/bg/sala_psicologia2.png"); 
     background-color: white;
     background-size: cover;
 }
 
-#story_view3{
+#psic_story_view3{
     background-image: url("../src/assets/bg/sala_psicologia3.png"); 
     background-color: white;
     background-size: cover;
 }
 
+
+
+@-webkit-keyframes jello-horizontal{0%{-webkit-transform:scale3d(1,1,1);transform:scale3d(1,1,1)}30%{-webkit-transform:scale3d(1.25,.75,1);transform:scale3d(1.25,.75,1)}40%{-webkit-transform:scale3d(.75,1.25,1);transform:scale3d(.75,1.25,1)}50%{-webkit-transform:scale3d(1.15,.85,1);transform:scale3d(1.15,.85,1)}65%{-webkit-transform:scale3d(.95,1.05,1);transform:scale3d(.95,1.05,1)}75%{-webkit-transform:scale3d(1.05,.95,1);transform:scale3d(1.05,.95,1)}100%{-webkit-transform:scale3d(1,1,1);transform:scale3d(1,1,1)}}@keyframes jello-horizontal{0%{-webkit-transform:scale3d(1,1,1);transform:scale3d(1,1,1)}30%{-webkit-transform:scale3d(1.25,.75,1);transform:scale3d(1.25,.75,1)}40%{-webkit-transform:scale3d(.75,1.25,1);transform:scale3d(.75,1.25,1)}50%{-webkit-transform:scale3d(1.15,.85,1);transform:scale3d(1.15,.85,1)}65%{-webkit-transform:scale3d(.95,1.05,1);transform:scale3d(.95,1.05,1)}75%{-webkit-transform:scale3d(1.05,.95,1);transform:scale3d(1.05,.95,1)}100%{-webkit-transform:scale3d(1,1,1);transform:scale3d(1,1,1)}}
+@-webkit-keyframes jello-diagonal-1{0%{-webkit-transform:skew(0deg 0deg);transform:skew(0deg 0deg)}30%{-webkit-transform:skew(25deg 25deg);transform:skew(25deg 25deg)}40%{-webkit-transform:skew(-15deg,-15deg);transform:skew(-15deg,-15deg)}50%{-webkit-transform:skew(15deg,15deg);transform:skew(15deg,15deg)}65%{-webkit-transform:skew(-5deg,-5deg);transform:skew(-5deg,-5deg)}75%{-webkit-transform:skew(5deg,5deg);transform:skew(5deg,5deg)}100%{-webkit-transform:skew(0deg 0deg);transform:skew(0deg 0deg)}}@keyframes jello-diagonal-1{0%{-webkit-transform:skew(0deg 0deg);transform:skew(0deg 0deg)}30%{-webkit-transform:skew(25deg 25deg);transform:skew(25deg 25deg)}40%{-webkit-transform:skew(-15deg,-15deg);transform:skew(-15deg,-15deg)}50%{-webkit-transform:skew(15deg,15deg);transform:skew(15deg,15deg)}65%{-webkit-transform:skew(-5deg,-5deg);transform:skew(-5deg,-5deg)}75%{-webkit-transform:skew(5deg,5deg);transform:skew(5deg,5deg)}100%{-webkit-transform:skew(0deg 0deg);transform:skew(0deg 0deg)}}
 
 
   

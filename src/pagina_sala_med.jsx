@@ -3,8 +3,12 @@ import './pagina_sala_med.css';
 import './paginas.css';
 import { useState } from 'react';
 import PropTypes from 'prop-types';
+import { DragDropContainer, DropTarget } from 'react-drag-drop-container';
+
 import Dialog from './components/dialog';
 import Lupa from './components/lupa';
+import DraImg from './assets/tito/personajes/TA_Doctora.png';
+import blank from './assets/bg/blank.png';
 import itzelVoice from './assets/sounds/itzel_voice.mp3';
 import titoVoice from './assets/sounds/tito_voice.mp3';
 
@@ -15,7 +19,9 @@ function Pagina_Sala_Medicina({ closeRoom }) {
   };
 
   const [viewIndex, setViewIndex] = useState(0);
-  const dialogPages = [
+  const [viewPage, setPageIndex] = useState(0);
+
+  const dialogPages1 = [
     {
       title: "Tito:",
       content: "Bienvenida a la sala de medicina. Aquí estarás con una doctora o un doctor que te van a ayudar.",
@@ -34,7 +40,7 @@ function Pagina_Sala_Medicina({ closeRoom }) {
     },
     {
       title: "Tito:",
-      content: "La doctora va a revisar a tu amigo para ver si hay algo que le duele y lo puedan curar.",
+      content: "Aqui, la doctora va a revisar a tu amigo para ver si hay algo que le duele y lo puedan curar.",
       character: "Tito"
     },
     {
@@ -42,6 +48,14 @@ function Pagina_Sala_Medicina({ closeRoom }) {
       content: "¡Ah! Es importante",
       character: "Itzel"
     },
+    {
+      title: "Tito:",
+      content: "¿En donde va la doctora?",
+      character: "Tito"
+    }
+  ];
+
+  const dialogPages2 = [
     {
       title: "Tito:",
       content: "Así es. Igual es importante que le digas dónde te duele para saber cómo ayudarte.",
@@ -59,17 +73,35 @@ function Pagina_Sala_Medicina({ closeRoom }) {
     }
   ];
 
-  const toggleDialog = () => {
+  const toggleDialog1 = () => {
     let beat = new Audio('https://commondatastorage.googleapis.com/codeskulptor-assets/week7-brrring.m4a');
     beat.play();
-    setViewIndex((prevIndex) => (prevIndex + 1) % dialogPages.length);
+    console.log(viewPage);
+    setPageIndex((prevDialog) => (prevDialog + 1) % dialogPages1.length);
   };
+
+  const toggleDialog2 = () => {
+    let beat = new Audio('https://commondatastorage.googleapis.com/codeskulptor-assets/week7-brrring.m4a');
+    beat.play();
+    console.log(viewPage);
+    setPageIndex((prevDialog) => (prevDialog + 1) % dialogPages2.length);
+  };
+
 
   const toggleView = () => {
     let beat = new Audio('https://commondatastorage.googleapis.com/codeskulptor-assets/week7-brrring.m4a');
     beat.play();
-    setViewIndex(0);
+    setViewIndex((prevIndex) => (prevIndex + 1) % 9);
   };
+
+  const itemEnters = () => {
+    console.log("Caja de doctora");
+    setPageIndex(0);
+    let beat = new Audio('http://starmen.net/mother1/music/08%20-%20MOTHER%20-%20You%20Won.mp3');
+    beat.play();
+    console.log(viewPage);
+    setViewIndex((prevIndex) => (prevIndex + 1) % 9);
+  }
 
   const handleTitoClick = () => {
     new Audio(titoVoice).play().catch(error => {
@@ -83,24 +115,92 @@ function Pagina_Sala_Medicina({ closeRoom }) {
     });
   };
 
+  const state = {
+    draggableVisibility: "block"
+  };
+
   return (
     <div className='pagina_sala_med_container'>
     <Lupa sala="Medicina"></Lupa>
-    <div className="character" id='tito' onClick={handleTitoClick}></div>
-    <div className="character" id='itzel' onClick={handleItzelClick}></div>
-    <div className="dialog_box">
-        <Dialog
-          className="dialog"
-          title={dialogPages[viewIndex].title}
-          content={dialogPages[viewIndex].content}
-          character={dialogPages[viewIndex].character}
-          onToggle={toggleView}
-        />
-        
-        {(viewIndex === dialogPages.length - 1) ? (
-          <button onClick={closeRoom} className='next_button'>Volver</button>
-        ): <button className='next_button' onClick={toggleDialog}>Next</button>}
+    {viewIndex === 0 && (
+      <div className='story_container' id='med_story_view1'>
+        <div className="character" id='tito' onClick={handleTitoClick}></div>
+        <div className="character" id='itzel' onClick={handleItzelClick}></div>
+        <div className="object" id='reloj'></div>
+        <div className="dialog_box">
+            <Dialog
+              className="dialog"
+              title={dialogPages1[viewPage].title}
+              content={dialogPages1[viewPage].content}
+              character={dialogPages1[viewPage].character}
+              onToggle={toggleView}
+            />
+            
+            {(viewPage === dialogPages1.length - 1) ? (
+                <button className='next_button' onClick={toggleView}>Comenzar</button>
+                ): <button className='next_button' onClick={toggleDialog1}>Siguiente</button>}
+          </div>
       </div>
+    )}
+    {viewIndex === 1 && (
+      <div className='story_container' id='med_story_view2'>
+        <div className="character" id='tito' onClick={handleTitoClick}></div>
+        <div className="object" id='reloj'></div>
+        <div className='character' id='doctora' style={{ display: "block" }}>
+            <DragDropContainer
+              targetKey="doctora_target"
+              style={{ display: state.draggableVisibility }}
+              dropData={{ type: "Doctora" }}
+                        
+            >
+              <img
+                src={DraImg}
+                width="150px"
+                height="270px"
+                alt=""
+              />
+              </DragDropContainer>
+        </div>
+
+        <div className="doctora-drop-target" id='doctora-container'>
+                <DropTarget
+                    id="my_target"
+                    targetKey="doctora_target"
+                    onHit={function () {
+                      itemEnters();
+                        
+                    }}
+                    >
+                    <img
+                        src={blank}
+                        height="350px"
+                        width="150px"
+                        alt=""
+                    />
+                </DropTarget>
+          </div>
+      </div>
+    )}
+    {viewIndex === 2 && (
+      <div className='story_container' id='med_story_view3'>
+        <div className="character" id='tito' onClick={handleTitoClick}></div>
+        <div className="character" id='itzel' onClick={handleItzelClick}></div>
+        <div className="object" id='reloj'></div>
+        <div className="dialog_box">
+            <Dialog
+              className="dialog"
+              title={dialogPages2[viewPage].title}
+              content={dialogPages2[viewPage].content}
+              character={dialogPages2[viewPage].character}
+              onToggle={toggleView}
+            />
+            
+            {(viewPage === dialogPages2.length - 1) ? (
+                <button className='next_button' onClick={closeRoom}>Finalizar</button>
+                ): <button className='next_button' onClick={toggleDialog2}>Siguiente</button>}
+          </div>
+      </div>
+    )}
     </div>
   );
 }

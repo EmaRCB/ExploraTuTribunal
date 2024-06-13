@@ -10,3 +10,50 @@
     justify-content: center;
 }
 
+.object{
+    height: 100px;
+    width: 100px;
+}
+
+#laptop{
+    position: absolute;
+    bottom: 50vh;
+    left: 45vw;
+    background-image: url("./assets/bg/objetos/laptop.png");
+    background-size: cover;
+}
+
+#laptop:hover{
+    transform: scale(1.25);
+}
+
+/*pasar esto */
+#of_story_view1{
+    background-image: url("../src/assets/bg/sala_oficina.png"); 
+    background-color: white;
+    background-size: cover;
+}
+
+#of_story_view2{
+    background-image: url("../src/assets/bg/sala_oficina2.png"); 
+    background-color: white;
+    background-size: cover;
+}
+
+#of_story_view3{
+    background-image: url("../src/assets/bg/sala_oficina3.png"); 
+    background-color: white;
+    background-size: cover;
+}
+
+#fiscal{
+    right: 100px;
+    bottom: 100px;
+  }
+
+#fiscal-container{
+    position: absolute;
+    left: 25vw;
+    bottom: 20vh;
+}
+

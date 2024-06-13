@@ -10,4 +10,52 @@
     justify-content: center;
 }
 
+.object{
+    height: 100px;
+    width: 100px;
+}
+
+#reloj{
+    position: absolute;
+    top: 50vh;
+    right: 43vw;
+    background-image: url("./assets/bg/objetos/reloj.png");
+    background-size: cover;
+}
+
+#reloj:hover{
+    transform: scale(1.25);
+}
+
+#med_story_view1{
+    background-image: url("../src/assets/bg/sala_medicina.png"); 
+    background-color: white;
+    background-size: cover;
+}
+
+#med_story_view2{
+    background-image: url("../src/assets/bg/sala_medicina2.png"); 
+    background-color: white;
+    background-size: cover;
+}
+
+#med_story_view3{
+    background-image: url("../src/assets/bg/sala_medicina3.png"); 
+    background-color: white;
+    background-size: cover;
+}
+
+#doctora{
+    right: 140px;
+    bottom: 100px;
+  }
+
+#doctora-container{
+    position: absolute;
+    left: 34vw;
+    bottom: 20vh;
+}
+
+
+
   
