@@ -1,7 +1,10 @@
-import { useState } from 'react';
+
 import PropTypes from 'prop-types';
 import './dialog.css';
 import '../paginas.css';
+import ItzelImage from '../assets/tito/Itzel_Head.png';
+import TitoImage from '../assets/tito/Tito_Head.png';
+import OtroPersonajeImage from '../assets/tito/Other_Head.png';
 
 const Dialog = ({ title, content, character }) => {
   Dialog.propTypes = {
@@ -11,20 +14,10 @@ const Dialog = ({ title, content, character }) => {
     onToggle: PropTypes.func.isRequired,
   };
 
-  const [isOpen, setIsOpen] = useState(false);
 
-  const openDialog = () => {
-    let beat = new Audio('https://commondatastorage.googleapis.com/codeskulptor-assets/week7-brrring.m4a');
-    beat.play();
-    setIsOpen(true);
-  };
-
-  const closeDialog = () => {
-    setIsOpen(false);
-  };
 
   const characterColors = {
-    Itzel: '#B996EC', // Color de fondo para Itzel
+    Itzel: '#F7A9A8', // Color de fondo para Itzel
     Tito: '#F3FCB1', // Color de fondo para Tito
     OtroPersonaje: '#ccccff' // Color de fondo para OtroPersonaje
     // Añade más personajes y colores si es necesario
@@ -32,23 +25,39 @@ const Dialog = ({ title, content, character }) => {
 
   const dialogStyle = {
     backgroundColor: characterColors[character] || '#fff', // Color de fondo por defecto
+    backgroundSize: 'cover'
+  };
+
+ const characterImage = {
+    Itzel: `url(${ItzelImage})`, // Image URL for Itzel
+    Tito: `url(${TitoImage})`, // Image URL for Tito
+    OtroPersonaje: `url(${OtroPersonajeImage})` // Image URL for OtroPersonaje
+    // Add more characters and images if necessary
+  };
+
+  const bubbleStyle = {
+    backgroundImage: characterImage[character] || 'none', // Default to 'none' if character image is not found
   };
 
   return (
     <div>
-      {isOpen && (
         <div className='dialog_box'>
+        
           <div className="dialog" style={dialogStyle}>
             <div className="dialog-content">
-              <h2 id='title'>{title}</h2>
+              <div className='dialog-title'>
+                <span className='icon-bubble' style={bubbleStyle}>
+
+                </span>
+                <span id='title'>{title}</span>
+              </div>
+              
               <p id='content'>{content}</p>
             </div>
           </div>
           <div className='arrow' id='left'></div>
           
         </div>
-      )}
-      {(!isOpen) ? (<button className='next_button' onClick={openDialog}>Iniciar</button>): <button className='next_button' onClick={closeDialog}>Cerrar</button>}
     </div>
   );
 };

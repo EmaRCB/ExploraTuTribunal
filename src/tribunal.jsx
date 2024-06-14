@@ -203,7 +203,7 @@ function Tribunal({ closeRoom }) {
                 
                 {(viewPage === dialogPages1.length - 1) ? (
                 <button className='next_button' onClick={toggleView}>Comenzar</button>
-                ): <button className='next_button' onClick={toggleDialog1}>Siguiente</button>}
+                ): <button className='next_button' onClick={toggleDialog1}><img src="../imagenes/flecha-verde.png" height={25} alt="flecha" /></button>}
             </div>
           </div>
           
@@ -395,7 +395,7 @@ function Tribunal({ closeRoom }) {
                 
                 {(viewPage === dialogPages2.length - 1) ? (
                 <button className='next_button' onClick={toggleView}>Continuar</button>
-                ): <button className='next_button' onClick={toggleDialog2}>Next</button>}
+                ): <button className='next_button' onClick={toggleDialog2}><img src="../imagenes/flecha-verde.png" height={25} alt="flecha" /></button>}
             </div>
           </div>
           )    
