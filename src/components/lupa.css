@@ -4,7 +4,7 @@
     right: 22vw;
     height: 50px;
     width: 50px;
-    background-image: url('../assets/lupaTool.svg');
+    background-image: url('../assets/photo_camera.svg');
     background-size: cover;
 }
 
@@ -31,6 +31,11 @@
     border-radius: 10px;
     max-width: 500px;
     width: 100%;
+}
+
+.imgSpacer{
+    height: 250px;
+    width: 500px;
 }
 
 .close_button {

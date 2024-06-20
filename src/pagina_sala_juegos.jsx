@@ -3,6 +3,7 @@ import './pagina_sala_juegos.css';
 import './paginas.css';
 import { useState } from 'react';
 import PropTypes from 'prop-types';
+import Lupa from './components/lupa';
 import Dialog from './components/dialog';
 import itzelVoice from './assets/sounds/itzel_voice.mp3';
 import titoVoice from './assets/sounds/tito_voice.mp3';
@@ -14,6 +15,7 @@ function Pagina_Sala_Juegos({ closeRoom }) {
   };
 
   const [viewIndex, setViewIndex] = useState(0);
+  
   const dialogPages = [
     {
       title: "Tito:",
@@ -44,7 +46,7 @@ function Pagina_Sala_Juegos({ closeRoom }) {
     {
       title: "Itzel:",
       content: "¡Qué divertido!",
-      character: "Tito"
+      character: "Itzel"
     },
     {
       title: "Tito:",
@@ -74,33 +76,40 @@ function Pagina_Sala_Juegos({ closeRoom }) {
     new Audio(titoVoice).play().catch(error => {
       console.error('Error playing audio:', error);
     });
+    let beat = new Audio('https://commondatastorage.googleapis.com/codeskulptor-assets/week7-brrring.m4a');
+    beat.play();
+    setViewIndex((prevIndex) => (prevIndex + 1) % dialogPages.length);
   };
 
   const handleItzelClick = () => {
     new Audio(itzelVoice).play().catch(error => {
       console.error('Error playing audio:', error);
     });
+    let beat = new Audio('https://commondatastorage.googleapis.com/codeskulptor-assets/week7-brrring.m4a');
+    beat.play();
+    setViewIndex((prevIndex) => (prevIndex + 1) % dialogPages.length);
   };
 
   return (
     <div className='pagina_sala_juegos_container'>
-    <div className="character" id='tito' onClick={handleTitoClick}></div>
-    <div className="character" id='itzel' onClick={handleItzelClick}></div>
-    <div className="object" id='pelota'></div>
-    <div className="object" id='oso'></div>
-    <div className="dialog_box">
-        <Dialog
-          className="dialog"
-          title={dialogPages[viewIndex].title}
-          content={dialogPages[viewIndex].content}
-          character={dialogPages[viewIndex].character}
-          onToggle={toggleView}
-        />
-        
-        {(viewIndex === dialogPages.length - 1) ? (
-          <button className='next_button' onClick={closeRoom}>Finish</button>
-        ): <button className='next_button' onClick={toggleDialog}><img src="../imagenes/flecha-verde.png" height={25} alt="flecha" /></button>}
-      </div>
+      <div className="character" id='tito' onClick={handleTitoClick}></div>
+      <div className="character" id='itzel' onClick={handleItzelClick}></div>
+      <div className="object" id='pelota'></div>
+      <div className="object" id='oso'></div>
+      <div className="dialog_box">
+          <Dialog
+            className="dialog"
+            title={dialogPages[viewIndex].title}
+            content={dialogPages[viewIndex].content}
+            character={dialogPages[viewIndex].character}
+            onToggle={toggleView}
+          />
+          
+          {(viewIndex === dialogPages.length - 1) ? (
+            <button className='next_button' onClick={closeRoom}>Finish</button>
+          ): <button className='next_button' onClick={toggleDialog}><img src="../imagenes/flecha-verde.png" height={25} alt="flecha" /></button>}
+        </div>
+        <Lupa sala="Juegos"></Lupa>
     </div>
   );
 }

@@ -1,4 +1,4 @@
-
+import { useState } from 'react';
 import PropTypes from 'prop-types';
 import './dialog.css';
 import '../paginas.css';
@@ -14,7 +14,12 @@ const Dialog = ({ title, content, character }) => {
     onToggle: PropTypes.func.isRequired,
   };
 
+  const [isOpen, setIsOpen] = useState(true);
 
+  
+  const closeDialog = () => {
+    setIsOpen(false);
+  };
 
   const characterColors = {
     Itzel: '#F7A9A8', // Color de fondo para Itzel
@@ -25,10 +30,9 @@ const Dialog = ({ title, content, character }) => {
 
   const dialogStyle = {
     backgroundColor: characterColors[character] || '#fff', // Color de fondo por defecto
-    backgroundSize: 'cover'
   };
 
- const characterImage = {
+  const characterImage = {
     Itzel: `url(${ItzelImage})`, // Image URL for Itzel
     Tito: `url(${TitoImage})`, // Image URL for Tito
     OtroPersonaje: `url(${OtroPersonajeImage})` // Image URL for OtroPersonaje
@@ -41,26 +45,25 @@ const Dialog = ({ title, content, character }) => {
 
   return (
     <div>
+      {isOpen && (
         <div className='dialog_box'>
-        
           <div className="dialog" style={dialogStyle}>
-            <div className="dialog-content">
-              <div className='dialog-title'>
+            <div className='dialog-title'>
                 <span className='icon-bubble' style={bubbleStyle}>
 
                 </span>
                 <span id='title'>{title}</span>
               </div>
-              
+            <div className="dialog-content">
               <p id='content'>{content}</p>
             </div>
           </div>
           <div className='arrow' id='left'></div>
           
         </div>
+      )}
+      <button className='next_button' onClick={closeDialog}>Cerrar</button>
     </div>
   );
 };
-
 export default Dialog;
-

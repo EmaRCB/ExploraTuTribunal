@@ -91,7 +91,7 @@ const toggleView = () => {
 
   return (
     <div className='pagina_1_container'>
-        <Lupa sala="Entrada"></Lupa>
+        
         <div className="character" id='tito' onClick={handleTitoClick}></div>
         <div className="character" id='itzel' onClick={handleItzelClick}></div>
         <div className="dialog_box">
@@ -106,8 +106,9 @@ const toggleView = () => {
           {(viewIndex === dialogPages.length - 1) ? (
             <button className='next_button' onClick={nextRoom}>Finish</button>
           ): <button className='next_button' onClick={toggleDialog}><img src="../imagenes/flecha-verde.png" height={25} alt="flecha" /></button>}
+      
       </div>
-     
+      <Lupa sala="Entrada"></Lupa>
     </div>
   );
 }

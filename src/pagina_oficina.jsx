@@ -126,7 +126,7 @@ function Pagina_Oficina({ closeRoom }) {
 
   return (
     <div className='pagina_oficina_container'>
-    <Lupa sala="Oficina"></Lupa>
+    
     {viewIndex === 0 && (
       <div className='story_container' id='of_story_view1'>
         <div className="character" id='tito' onClick={handleTitoClick}></div>
@@ -206,6 +206,7 @@ function Pagina_Oficina({ closeRoom }) {
           </div>
       </div>
     )}
+    <Lupa sala="Oficina"></Lupa>
     </div>
   );
 }

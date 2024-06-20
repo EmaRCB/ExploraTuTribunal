@@ -121,11 +121,11 @@ function Pagina_Sala_Medicina({ closeRoom }) {
 
   return (
     <div className='pagina_sala_med_container'>
-    <Lupa sala="Medicina"></Lupa>
+    
     {viewIndex === 0 && (
       <div className='story_container' id='med_story_view1'>
-        <div className="character" id='tito' onClick={handleTitoClick}></div>
-        <div className="character" id='itzel' onClick={handleItzelClick}></div>
+        <div className="character" id='tito' onClick={toggleDialog1}></div>
+        <div className="character" id='itzel' onClick={toggleDialog1}></div>
         <div className="object" id='reloj'></div>
         <div className="dialog_box">
             <Dialog
@@ -183,8 +183,8 @@ function Pagina_Sala_Medicina({ closeRoom }) {
     )}
     {viewIndex === 2 && (
       <div className='story_container' id='med_story_view3'>
-        <div className="character" id='tito' onClick={handleTitoClick}></div>
-        <div className="character" id='itzel' onClick={handleItzelClick}></div>
+        <div className="character" id='tito' onClick={toggleDialog2}></div>
+        <div className="character" id='itzel' onClick={toggleDialog2}></div>
         <div className="object" id='reloj'></div>
         <div className="dialog_box">
             <Dialog
@@ -196,13 +196,24 @@ function Pagina_Sala_Medicina({ closeRoom }) {
             />
             
             {(viewPage === dialogPages2.length - 1) ? (
-                <button className='next_button' onClick={closeRoom}>Finalizar</button>
+                <button className='next_button' onClick={toggleView}>Finalizar</button>
                 ): <button className='next_button' onClick={toggleDialog2}><img src="../imagenes/flecha-verde.png" height={25} alt="flecha" /></button>}
           </div>
       </div>
     )}
+    {viewIndex === 3 && (
+      <div className='story_container' id='med_story_view3'>
+        <div className="character" id='tito' onClick={handleTitoClick}></div>
+        <div className="character" id='itzel' onClick={handleItzelClick}></div>
+        <div className="object" id='reloj'></div>
+        <button className='next_button' onClick={closeRoom}>Finalizar</button>
+      </div>
+    )}
+    <Lupa sala="Medicina"></Lupa>
     </div>
+    
   );
+  
 }
 
 export default Pagina_Sala_Medicina;

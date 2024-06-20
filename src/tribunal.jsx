@@ -187,7 +187,7 @@ function Tribunal({ closeRoom }) {
   return (
     <div className='tribunal_container'>
         
-    <Lupa sala="Tribunal"></Lupa>
+    
         {viewIndex === 0 && (
           <div className='trib_story_container' id='trib_story_view0'>
             <div className="character" id='tito' onClick={handleTitoClick}></div>
@@ -974,7 +974,7 @@ function Tribunal({ closeRoom }) {
           )    
         }
         
-        
+        <Lupa sala="TribunalDentro"></Lupa>
     </div>
   );
 }

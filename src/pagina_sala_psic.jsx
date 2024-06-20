@@ -114,7 +114,7 @@ function Pagina_Sala_Psicologia({ closeRoom }) {
 
   return (
     <div className='pagina_sala_psic_container'>
-      <Lupa sala="Psicologia"></Lupa>
+      
       <div className="object" id='cojin1'></div>
       <div className="object" id='cojin2'></div>
       {viewIndex === 0 && (
@@ -193,7 +193,7 @@ function Pagina_Sala_Psicologia({ closeRoom }) {
           </div>
       </div>
     )}
-    
+    <Lupa sala="Psicologia"></Lupa>
     </div>
   );
 }
