@@ -94,6 +94,20 @@ function Pagina_Sala_Medicina({ closeRoom }) {
     setViewIndex((prevIndex) => (prevIndex + 1) % 9);
   };
 
+  const nextToTalk = () => {
+    let nextCharacter = dialogPages1[viewPage + 1]?.character;
+    console.log(nextCharacter);
+    if (nextCharacter) {
+      const characterElement = document.getElementById(nextCharacter.toLowerCase());
+      if (characterElement) {
+        characterElement.style.backgroundImage = "url('./assets/tito/Group 268.png')";
+      } else {
+        console.error("Character element not found:", nextCharacter.toLowerCase());
+      }
+    }
+    
+  };
+
   const itemEnters = () => {
     console.log("Caja de doctora");
     setPageIndex(0);
@@ -124,8 +138,8 @@ function Pagina_Sala_Medicina({ closeRoom }) {
     
     {viewIndex === 0 && (
       <div className='story_container' id='med_story_view1'>
-        <div className="character" id='tito' onClick={toggleDialog1}></div>
-        <div className="character" id='itzel' onClick={toggleDialog1}></div>
+        <div className="character" id='tito' onMouseOver={nextToTalk} onClick={toggleDialog1}></div>
+        <div className="character" id='itzel' onMouseOver={nextToTalk} onClick={toggleDialog1}></div>
         <div className="object" id='reloj'></div>
         <div className="dialog_box">
             <Dialog

@@ -92,8 +92,8 @@ const toggleView = () => {
   return (
     <div className='pagina_1_container'>
         
-        <div className="character" id='tito' onClick={handleTitoClick}></div>
-        <div className="character" id='itzel' onClick={handleItzelClick}></div>
+        <div className="character" id='tito' onClick={toggleDialog}></div>
+        <div className="character" id='itzel' onClick={toggleDialog}></div>
         <div className="dialog_box">
           <Dialog
             className="dialog"
