@@ -171,6 +171,46 @@ function Tribunal({ closeRoom }) {
         console.log(viewPage);
         setViewIndex((prevIndex) => (prevIndex + 1) % 9);
     }
+
+    const nextToTalk1 = (currentCharacter) => {
+        let nextCharacter = dialogPages1[viewPage + 1]?.character;
+        if (nextCharacter==currentCharacter){
+          console.log("Itzel2")
+          toggleDialog1();
+        }
+      };
+    
+    const nextToTalk2 = (currentCharacter) => {
+        let nextCharacter = dialogPages2[viewPage + 1]?.character;
+        if (nextCharacter==currentCharacter){
+          console.log("Itzel2")
+          toggleDialog2();
+        }
+    };
+
+    const nextToTalk3 = (currentCharacter) => {
+        let nextCharacter = dialogPages3[viewPage + 1]?.character;
+        if (nextCharacter==currentCharacter){
+          console.log("Itzel2")
+          toggleDialog3();
+        }
+      };
+    
+      const nextToTalk4 = (currentCharacter) => {
+        let nextCharacter = dialogPages4[viewPage + 1]?.character;
+        if (nextCharacter==currentCharacter){
+          console.log("Itzel2")
+          toggleDialog4();
+        }
+      };
+    
+    const nextToTalk5 = (currentCharacter) => {
+        let nextCharacter = dialogPages5[viewPage + 1]?.character;
+        if (nextCharacter==currentCharacter){
+          console.log("Itzel2")
+          toggleDialog5();
+        }
+    };
   
     const handleTitoClick = () => {
         new Audio(titoVoice).play().catch(error => {
@@ -190,8 +230,8 @@ function Tribunal({ closeRoom }) {
     
         {viewIndex === 0 && (
           <div className='trib_story_container' id='trib_story_view0'>
-            <div className="character" id='tito' onClick={handleTitoClick}></div>
-            <div className="character" id='itzel' onClick={handleItzelClick}></div>
+            <div className="character" id='tito' onClick={() => nextToTalk1('Tito')} onMouseOver={handleTitoClick}></div>
+            <div className="character" id='itzel' onClick={() => nextToTalk1('Itzel')} onMouseOver={handleItzelClick}></div>
             <div className="dialog_box">
                 <Dialog
                 className="dialog"
@@ -382,8 +422,8 @@ function Tribunal({ closeRoom }) {
         {viewIndex === 2 && 
           (
             <div className='trib_story_container' id='trib_story_view2'>
-            <div className="character" id='tito' onClick={handleTitoClick}></div>
-            <div className="character" id='itzel' onClick={handleItzelClick}></div>
+            <div className="character" id='tito' onClick={() => nextToTalk2('Tito')} onMouseOver={handleTitoClick}></div>
+            <div className="character" id='itzel' onClick={() => nextToTalk2('Itzel')} onMouseOver={handleItzelClick}></div>
             <div className="dialog_box">
                 <Dialog
                 className="dialog"
@@ -573,8 +613,8 @@ function Tribunal({ closeRoom }) {
         {viewIndex === 4 && 
           (
             <div className='trib_story_container' id='trib_story_view4'>
-            <div className="character" id='tito' onClick={handleTitoClick}></div>
-            <div className="character" id='itzel' onClick={handleItzelClick}></div>
+            <div className="character" id='tito' onClick={() => nextToTalk3('Tito')} onMouseOver={handleTitoClick}></div>
+            <div className="character" id='itzel' onClick={() => nextToTalk3('Itzel')} onMouseOver={handleItzelClick}></div>
             <div className="dialog_box">
                 <Dialog
                 className="dialog"
@@ -764,8 +804,8 @@ function Tribunal({ closeRoom }) {
         {viewIndex === 6 && 
           (
             <div className='trib_story_container' id='trib_story_view6'>
-            <div className="character" id='tito' onClick={handleTitoClick}></div>
-            <div className="character" id='itzel' onClick={handleItzelClick}></div>
+            <div className="character" id='tito' onClick={() => nextToTalk4('Tito')} onMouseOver={handleTitoClick}></div>
+            <div className="character" id='itzel' onClick={() => nextToTalk4('Itzel')} onMouseOver={handleItzelClick}></div>
             <div className="dialog_box">
                 <Dialog
                 className="dialog"
@@ -955,8 +995,8 @@ function Tribunal({ closeRoom }) {
         {viewIndex === 8 && 
           (
             <div className='trib_story_container' id='trib_story_view8'>
-            <div className="character" id='tito' onClick={handleTitoClick}></div>
-            <div className="character" id='itzel' onClick={handleItzelClick}></div>
+            <div className="character" id='tito' onClick={() => nextToTalk5('Tito')} onMouseOver={handleTitoClick}></div>
+            <div className="character" id='itzel' onClick={() => nextToTalk5('Itzel')} onMouseOver={handleItzelClick}></div>
             <div className="dialog_box">
                 <Dialog
                 className="dialog"

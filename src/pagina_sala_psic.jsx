@@ -87,6 +87,22 @@ function Pagina_Sala_Psicologia({ closeRoom }) {
     setViewIndex((prevIndex) => (prevIndex + 1) % 9);
   };
 
+  const nextToTalk1 = (currentCharacter) => {
+    let nextCharacter = dialogPages1[viewPage + 1]?.character;
+    if (nextCharacter==currentCharacter){
+      console.log("Itzel2")
+      toggleDialog1();
+    }
+  };
+
+  const nextToTalk2 = (currentCharacter) => {
+    let nextCharacter = dialogPages2[viewPage + 1]?.character;
+    if (nextCharacter==currentCharacter){
+      console.log("Itzel2")
+      toggleDialog2();
+    }
+  };
+
   const itemEnters = () => {
     console.log("Caja de pSICOLOGA");
     setPageIndex(0);
@@ -119,8 +135,8 @@ function Pagina_Sala_Psicologia({ closeRoom }) {
       <div className="object" id='cojin2'></div>
       {viewIndex === 0 && (
       <div className='story_container' id='psic_story_view1'>
-        <div className="character" id='tito' onClick={handleTitoClick}></div>
-        <div className="character" id='itzel' onClick={handleItzelClick}></div>
+        <div className="character" id='tito' onClick={() => nextToTalk1('Tito')} onMouseOver={handleTitoClick}></div>
+        <div className="character" id='itzel' onClick={() => nextToTalk1('Itzel')} onMouseOver={handleItzelClick}></div>
         <div className="dialog_box">
             <Dialog
               className="dialog"
@@ -176,8 +192,8 @@ function Pagina_Sala_Psicologia({ closeRoom }) {
     )}
     {viewIndex === 2 && (
       <div className='story_container' id='psic_story_view3'>
-        <div className="character" id='tito' onClick={handleTitoClick}></div>
-        <div className="character" id='itzel' onClick={handleItzelClick}></div>
+        <div className="character" id='tito' onClick={() => nextToTalk2('Tito')} onMouseOver={handleTitoClick}></div>
+        <div className="character" id='itzel' onClick={() => nextToTalk2('Itzel')} onMouseOver={handleItzelClick}></div>
         <div className="dialog_box">
             <Dialog
               className="dialog"

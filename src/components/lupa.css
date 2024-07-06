@@ -1,5 +1,6 @@
 .lupa_container{
     position: absolute;
+    display:flex; 
     bottom: 20vh;
     right: 22vw;
     height: 50px;
