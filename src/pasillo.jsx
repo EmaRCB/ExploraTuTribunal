@@ -5,6 +5,7 @@ import './pasillo.css';
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import Pagina_Bienvenida from './pagina_bienvenida';
+import InstruccionesPasillo from './components/InstruccionesPasillo.jsx';
 import Pagina_Sala_Juegos from './pagina_sala_juegos';
 import Pagina_Sala_Medicina from './pagina_sala_med';
 import Pagina_Sala_Psicologia from './pagina_sala_psic';
@@ -13,7 +14,10 @@ import itzelVoice from './assets/sounds/itzel_voice.mp3';
 import titoVoice from './assets/sounds/tito_voice.mp3';
 import Tribunal from './tribunal';
 
+import { useState } from 'react';
+
 function Pasillo() {
+    const [showPopup, setShowPopup] = useState(true);
 
     function openRoom(sala) {
         var x = document.getElementById(sala); 
@@ -38,6 +42,10 @@ function Pasillo() {
         pasillo.style.display = 'flex';
     }
 
+    const handlePopupClose = () => {
+        setShowPopup(false);
+      };
+
     const handleTitoClick = () => {
         new Audio(titoVoice).play().catch(error => {
           console.error('Error playing audio:', error);
@@ -52,7 +60,7 @@ function Pasillo() {
 
     return (
         <div className='container'>
-            <div className='box' id='box'><p>¡Explora el tribunal! Da click en cualquier puerta para entrar a la habitación.</p></div>
+            {showPopup && <InstruccionesPasillo onClose={handlePopupClose} />}
             <div className="character" id='tito' onClick={handleTitoClick}></div>
             <div className="character" id='itzel' onClick={handleItzelClick}></div>
             <div className='pasillo_container' id='pasillo'>
