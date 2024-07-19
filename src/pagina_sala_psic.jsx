@@ -6,6 +6,8 @@ import PropTypes from 'prop-types';
 import { DragDropContainer, DropTarget } from 'react-drag-drop-container';
 
 import Dialog from './components/dialog';
+import Tito from './components/Tito';
+import Itzel from './components/Itzel';
 import Lupa from './components/lupa';
 import PsicologaImg from './assets/tito/personajes/TA_Psicóloga.png';
 import blank from './assets/bg/blank.png';
@@ -20,6 +22,8 @@ function Pagina_Sala_Psicologia({ closeRoom }) {
 
   const [viewIndex, setViewIndex] = useState(0);
   const [viewPage, setPageIndex] = useState(0);
+  const [isTitoAnimating, setTitoAnimating] = useState(false);
+  const [isItzelAnimating, setItzelAnimating] = useState(false);
 
   const dialogPages1 = [
     {
@@ -93,6 +97,14 @@ function Pagina_Sala_Psicologia({ closeRoom }) {
       console.log("Itzel2")
       toggleDialog1();
     }
+    if (nextCharacter=='Itzel'){
+      setItzelAnimating(true);
+      setTitoAnimating(false);
+    }
+    if (nextCharacter=='Tito'){
+      setItzelAnimating(false);
+      setTitoAnimating(true);
+    }
   };
 
   const nextToTalk2 = (currentCharacter) => {
@@ -100,6 +112,14 @@ function Pagina_Sala_Psicologia({ closeRoom }) {
     if (nextCharacter==currentCharacter){
       console.log("Itzel2")
       toggleDialog2();
+    }
+    if (nextCharacter=='Itzel'){
+      setItzelAnimating(true);
+      setTitoAnimating(false);
+    }
+    if (nextCharacter=='Tito'){
+      setItzelAnimating(false);
+      setTitoAnimating(true);
     }
   };
 
@@ -135,8 +155,12 @@ function Pagina_Sala_Psicologia({ closeRoom }) {
       <div className="object" id='cojin2'></div>
       {viewIndex === 0 && (
       <div className='story_container' id='psic_story_view1'>
-        <div className="character" id='tito' onClick={() => nextToTalk1('Tito')} onMouseOver={handleTitoClick}></div>
-        <div className="character" id='itzel' onClick={() => nextToTalk1('Itzel')} onMouseOver={handleItzelClick}></div>
+        <div className="character" id='tito' onMouseOver={() => handleTitoClick('Tito')}>
+          <Tito isAnimating={isTitoAnimating} isClickable={true} onClick={() => nextToTalk1('Tito')}/>
+        </div>
+        <div className="character" id='itzel' onMouseOver={() => handleItzelClick('Itzel')}>
+          <Itzel isAnimating={isItzelAnimating} isClickable={true} onClick={() => nextToTalk1('Itzel')}/>
+        </div>
         <div className="dialog_box">
             <Dialog
               className="dialog"
@@ -192,8 +216,12 @@ function Pagina_Sala_Psicologia({ closeRoom }) {
     )}
     {viewIndex === 2 && (
       <div className='story_container' id='psic_story_view3'>
-        <div className="character" id='tito' onClick={() => nextToTalk2('Tito')} onMouseOver={handleTitoClick}></div>
-        <div className="character" id='itzel' onClick={() => nextToTalk2('Itzel')} onMouseOver={handleItzelClick}></div>
+        <div className="character" id='tito' onMouseOver={() => handleTitoClick('Tito')}>
+          <Tito isAnimating={isTitoAnimating} isClickable={true} onClick={() => nextToTalk2('Tito')}/>
+        </div>
+        <div className="character" id='itzel' onMouseOver={() => handleItzelClick('Itzel')}>
+          <Itzel isAnimating={isItzelAnimating} isClickable={true} onClick={() => nextToTalk2('Itzel')}/>
+        </div>
         <div className="dialog_box">
             <Dialog
               className="dialog"

@@ -7,6 +7,8 @@ import { DragDropContainer, DropTarget } from 'react-drag-drop-container';
 
 import Dialog from './components/dialog';
 import Lupa from './components/lupa';
+import Tito from './components/Tito';
+import Itzel from './components/Itzel';
 import FiscalImg from './assets/tito/personajes/TA_Fiscal.png';
 import blank from './assets/bg/blank.png';
 import itzelVoice from './assets/sounds/itzel_voice.mp3';
@@ -20,6 +22,8 @@ function Pagina_Oficina({ closeRoom }) {
 
   const [viewIndex, setViewIndex] = useState(0);
   const [viewPage, setPageIndex] = useState(0);
+  const [isTitoAnimating, setTitoAnimating] = useState(false);
+  const [isItzelAnimating, setItzelAnimating] = useState(false);
 
   const dialogPages1 = [
     {
@@ -105,6 +109,14 @@ function Pagina_Oficina({ closeRoom }) {
       console.log("Itzel2")
       toggleDialog1();
     }
+    if (nextCharacter=='Itzel'){
+      setItzelAnimating(true);
+      setTitoAnimating(false);
+    }
+    if (nextCharacter=='Tito'){
+      setItzelAnimating(false);
+      setTitoAnimating(true);
+    }
   };
 
   const nextToTalk2 = (currentCharacter) => {
@@ -112,6 +124,14 @@ function Pagina_Oficina({ closeRoom }) {
     if (nextCharacter==currentCharacter){
       console.log("Itzel2")
       toggleDialog2();
+    }
+    if (nextCharacter=='Itzel'){
+      setItzelAnimating(true);
+      setTitoAnimating(false);
+    }
+    if (nextCharacter=='Tito'){
+      setItzelAnimating(false);
+      setTitoAnimating(true);
     }
   };
 
@@ -145,8 +165,12 @@ function Pagina_Oficina({ closeRoom }) {
     
     {viewIndex === 0 && (
       <div className='story_container' id='of_story_view1'>
-        <div className="character" id='tito' onClick={() => nextToTalk1('Tito')} onMouseOver={handleTitoClick}></div>
-        <div className="character" id='itzel' onClick={() => nextToTalk1('Itzel')} onMouseOver={handleItzelClick}></div>
+        <div className="character" id='tito' onMouseOver={() => handleTitoClick('Tito')}>
+          <Tito isAnimating={isTitoAnimating} isClickable={true} onClick={() => nextToTalk1('Tito')}/>
+        </div>
+        <div className="character" id='itzel' onMouseOver={() => handleItzelClick('Itzel')}>
+          <Itzel isAnimating={isItzelAnimating} isClickable={true} onClick={() => nextToTalk1('Itzel')}/>
+        </div>
         <div className="object" id='laptop'></div>
         <div className="dialog_box">
             <Dialog
@@ -204,8 +228,12 @@ function Pagina_Oficina({ closeRoom }) {
     )}
     {viewIndex === 2 && (
       <div className='story_container' id='of_story_view3'>
-        <div className="character" id='tito' onClick={() => nextToTalk2('Tito')} onMouseOver={handleTitoClick}></div>
-        <div className="character" id='itzel' onClick={() => nextToTalk2('Itzel')} onMouseOver={handleItzelClick}></div>
+        <div className="character" id='tito' onMouseOver={() => handleTitoClick('Tito')}>
+          <Tito isAnimating={isTitoAnimating} isClickable={true} onClick={() => nextToTalk2('Tito')}/>
+        </div>
+        <div className="character" id='itzel' onMouseOver={() => handleItzelClick('Itzel')}>
+          <Itzel isAnimating={isItzelAnimating} isClickable={true} onClick={() => nextToTalk2('Itzel')}/>
+        </div>
         <div className="object" id='laptop'></div>
         <div className="dialog_box">
             <Dialog

@@ -4,6 +4,8 @@ import './paginas.css';
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 import Lupa from './components/lupa';
+import Tito from './components/Tito';
+import Itzel from './components/Itzel';
 import Dialog from './components/dialog';
 import itzelVoice from './assets/sounds/itzel_voice.mp3';
 import titoVoice from './assets/sounds/tito_voice.mp3';
@@ -15,6 +17,8 @@ function Pagina_Sala_Juegos({ closeRoom }) {
   };
 
   const [viewIndex, setViewIndex] = useState(0);
+  const [isTitoAnimating, setTitoAnimating] = useState(false);
+  const [isItzelAnimating, setItzelAnimating] = useState(false);
   
   const dialogPages = [
     {
@@ -72,28 +76,53 @@ function Pagina_Sala_Juegos({ closeRoom }) {
     setViewIndex(0);
   };
 
-  const handleTitoClick = () => {
-    new Audio(titoVoice).play().catch(error => {
-      console.error('Error playing audio:', error);
-    });
-    let beat = new Audio('https://commondatastorage.googleapis.com/codeskulptor-assets/week7-brrring.m4a');
-    beat.play();
-    setViewIndex((prevIndex) => (prevIndex + 1) % dialogPages.length);
+  const nextToTalk = (currentCharacter) => {
+    let nextCharacter = dialogPages[viewIndex + 1]?.character;
+    if (nextCharacter==currentCharacter){
+      console.log("Itzel2")
+      toggleDialog();
+    }
+    if (nextCharacter=='Itzel'){
+      setItzelAnimating(true);
+      setTitoAnimating(false);
+    }
+    if (nextCharacter=='Tito'){
+      setItzelAnimating(false);
+      setTitoAnimating(true);
+    }
   };
 
-  const handleItzelClick = () => {
-    new Audio(itzelVoice).play().catch(error => {
-      console.error('Error playing audio:', error);
-    });
-    let beat = new Audio('https://commondatastorage.googleapis.com/codeskulptor-assets/week7-brrring.m4a');
-    beat.play();
-    setViewIndex((prevIndex) => (prevIndex + 1) % dialogPages.length);
+  const handleTitoClick = (currentCharacter) => {
+    
+    let nextCharacter = dialogPages[viewIndex + 1]?.character;
+    if (nextCharacter==currentCharacter){
+      
+      new Audio(titoVoice).play().catch(error => {
+        console.error('Error playing audio:', error);
+      });
+    }
+  };
+
+  const handleItzelClick = (currentCharacter) => {
+    
+    let nextCharacter = dialogPages[viewIndex + 1]?.character;
+    if (nextCharacter==currentCharacter){
+      
+      new Audio(itzelVoice).play().catch(error => {
+        console.error('Error playing audio:', error);
+      });
+      
+    }
   };
 
   return (
     <div className='pagina_sala_juegos_container'>
-      <div className="character" id='tito' onClick={handleTitoClick}></div>
-      <div className="character" id='itzel' onClick={handleItzelClick}></div>
+      <div className="character" id='tito' onMouseOver={() => handleTitoClick('Tito')}>
+          <Tito isAnimating={isTitoAnimating} isClickable={true} onClick={() => nextToTalk('Tito')}/>
+        </div>
+        <div className="character" id='itzel' onMouseOver={() => handleItzelClick('Itzel')}>
+          <Itzel isAnimating={isItzelAnimating} isClickable={true} onClick={() => nextToTalk('Itzel')}/>
+        </div>
       <div className="object" id='pelota'></div>
       <div className="object" id='oso'></div>
       <div className="dialog_box">

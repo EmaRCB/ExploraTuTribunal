@@ -84,3 +84,13 @@
     height: 100%;
     object-fit: cover;
   }
+
+  #tito:hover{
+    background-image: url("../src/assets/tito/Tito_02.png");
+    transform: scale(1.15);
+  }
+  
+  #itzel:hover{
+    background-image: url("../src/assets/tito/Itzel_02.png");
+    transform: scale(1.15);
+  }

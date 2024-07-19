@@ -10,6 +10,9 @@ import Pagina_Sala_Juegos from './pagina_sala_juegos';
 import Pagina_Sala_Medicina from './pagina_sala_med';
 import Pagina_Sala_Psicologia from './pagina_sala_psic';
 import Pagina_Oficina from './pagina_oficina';
+import Tito from './components/Tito';
+import Itzel from './components/Itzel';
+
 import itzelVoice from './assets/sounds/itzel_voice.mp3';
 import titoVoice from './assets/sounds/tito_voice.mp3';
 import Tribunal from './tribunal';
@@ -61,7 +64,12 @@ function Pasillo() {
     return (
         <div className='container'>
             {showPopup && <InstruccionesPasillo onClose={handlePopupClose} />}
-            <div className="character" id='tito' onClick={handleTitoClick}></div>
+            <div className="character" id='tito' onMouseOver={() => handleTitoClick('Tito')}>
+                <Tito isClickable={true}/>
+            </div>
+            <div className="character" id='itzel' onMouseOver={() => handleItzelClick('Itzel')}>
+                <Itzel isClickable={true}/>
+            </div>
             <div className="character" id='itzel' onClick={handleItzelClick}></div>
             <div className='pasillo_container' id='pasillo'>
         

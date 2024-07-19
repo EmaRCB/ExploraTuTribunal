@@ -6,6 +6,8 @@ import { DragDropContainer, DropTarget } from 'react-drag-drop-container';
 import Dialog from './components/dialog';
 import Lupa from './components/lupa';
 import PropTypes from 'prop-types';
+import Tito from './components/Tito';
+import Itzel from './components/Itzel';
 
 import titoVoice from './assets/sounds/tito_voice.mp3';
 import itzelVoice from './assets/sounds/itzel_voice.mp3';
@@ -23,6 +25,8 @@ function Tribunal({ closeRoom }) {
 
     const [viewIndex, setViewIndex] = useState(0);
     const [viewPage, setPageIndex] = useState(0);
+    const [isTitoAnimating, setTitoAnimating] = useState(false);
+    const [isItzelAnimating, setItzelAnimating] = useState(false);
 
     const dialogPages1 = [
         {
@@ -178,6 +182,14 @@ function Tribunal({ closeRoom }) {
           console.log("Itzel2")
           toggleDialog1();
         }
+        if (nextCharacter=='Itzel'){
+            setItzelAnimating(true);
+            setTitoAnimating(false);
+          }
+          if (nextCharacter=='Tito'){
+            setItzelAnimating(false);
+            setTitoAnimating(true);
+          }
       };
     
     const nextToTalk2 = (currentCharacter) => {
@@ -186,6 +198,14 @@ function Tribunal({ closeRoom }) {
           console.log("Itzel2")
           toggleDialog2();
         }
+        if (nextCharacter=='Itzel'){
+            setItzelAnimating(true);
+            setTitoAnimating(false);
+          }
+          if (nextCharacter=='Tito'){
+            setItzelAnimating(false);
+            setTitoAnimating(true);
+          }
     };
 
     const nextToTalk3 = (currentCharacter) => {
@@ -194,6 +214,14 @@ function Tribunal({ closeRoom }) {
           console.log("Itzel2")
           toggleDialog3();
         }
+        if (nextCharacter=='Itzel'){
+            setItzelAnimating(true);
+            setTitoAnimating(false);
+          }
+          if (nextCharacter=='Tito'){
+            setItzelAnimating(false);
+            setTitoAnimating(true);
+          }
       };
     
       const nextToTalk4 = (currentCharacter) => {
@@ -202,6 +230,14 @@ function Tribunal({ closeRoom }) {
           console.log("Itzel2")
           toggleDialog4();
         }
+        if (nextCharacter=='Itzel'){
+            setItzelAnimating(true);
+            setTitoAnimating(false);
+          }
+          if (nextCharacter=='Tito'){
+            setItzelAnimating(false);
+            setTitoAnimating(true);
+          }
       };
     
     const nextToTalk5 = (currentCharacter) => {
@@ -210,6 +246,14 @@ function Tribunal({ closeRoom }) {
           console.log("Itzel2")
           toggleDialog5();
         }
+        if (nextCharacter=='Itzel'){
+            setItzelAnimating(true);
+            setTitoAnimating(false);
+          }
+          if (nextCharacter=='Tito'){
+            setItzelAnimating(false);
+            setTitoAnimating(true);
+          }
     };
   
     const handleTitoClick = () => {
@@ -230,8 +274,12 @@ function Tribunal({ closeRoom }) {
     
         {viewIndex === 0 && (
           <div className='trib_story_container' id='trib_story_view0'>
-            <div className="character" id='tito' onClick={() => nextToTalk1('Tito')} onMouseOver={handleTitoClick}></div>
-            <div className="character" id='itzel' onClick={() => nextToTalk1('Itzel')} onMouseOver={handleItzelClick}></div>
+            <div className="character" id='tito' onMouseOver={() => handleTitoClick('Tito')}>
+                <Tito isAnimating={isTitoAnimating} isClickable={true} onClick={() => nextToTalk1('Tito')}/>
+            </div>
+            <div className="character" id='itzel' onMouseOver={() => handleItzelClick('Itzel')}>
+                <Itzel isAnimating={isItzelAnimating} isClickable={true} onClick={() => nextToTalk1('Itzel')}/>
+            </div>
             <div className="dialog_box">
                 <Dialog
                 className="dialog"
@@ -422,8 +470,12 @@ function Tribunal({ closeRoom }) {
         {viewIndex === 2 && 
           (
             <div className='trib_story_container' id='trib_story_view2'>
-            <div className="character" id='tito' onClick={() => nextToTalk2('Tito')} onMouseOver={handleTitoClick}></div>
-            <div className="character" id='itzel' onClick={() => nextToTalk2('Itzel')} onMouseOver={handleItzelClick}></div>
+            <div className="character" id='tito' onMouseOver={() => handleTitoClick('Tito')}>
+                <Tito isAnimating={isTitoAnimating} isClickable={true} onClick={() => nextToTalk2('Tito')}/>
+            </div>
+            <div className="character" id='itzel' onMouseOver={() => handleItzelClick('Itzel')}>
+                <Itzel isAnimating={isItzelAnimating} isClickable={true} onClick={() => nextToTalk2('Itzel')}/>
+            </div>
             <div className="dialog_box">
                 <Dialog
                 className="dialog"
@@ -613,8 +665,12 @@ function Tribunal({ closeRoom }) {
         {viewIndex === 4 && 
           (
             <div className='trib_story_container' id='trib_story_view4'>
-            <div className="character" id='tito' onClick={() => nextToTalk3('Tito')} onMouseOver={handleTitoClick}></div>
-            <div className="character" id='itzel' onClick={() => nextToTalk3('Itzel')} onMouseOver={handleItzelClick}></div>
+            <div className="character" id='tito' onMouseOver={() => handleTitoClick('Tito')}>
+                <Tito isAnimating={isTitoAnimating} isClickable={true} onClick={() => nextToTalk3('Tito')}/>
+            </div>
+            <div className="character" id='itzel' onMouseOver={() => handleItzelClick('Itzel')}>
+                <Itzel isAnimating={isItzelAnimating} isClickable={true} onClick={() => nextToTalk3('Itzel')}/>
+            </div>
             <div className="dialog_box">
                 <Dialog
                 className="dialog"
@@ -804,8 +860,12 @@ function Tribunal({ closeRoom }) {
         {viewIndex === 6 && 
           (
             <div className='trib_story_container' id='trib_story_view6'>
-            <div className="character" id='tito' onClick={() => nextToTalk4('Tito')} onMouseOver={handleTitoClick}></div>
-            <div className="character" id='itzel' onClick={() => nextToTalk4('Itzel')} onMouseOver={handleItzelClick}></div>
+            <div className="character" id='tito' onMouseOver={() => handleTitoClick('Tito')}>
+                <Tito isAnimating={isTitoAnimating} isClickable={true} onClick={() => nextToTalk4('Tito')}/>
+            </div>
+            <div className="character" id='itzel' onMouseOver={() => handleItzelClick('Itzel')}>
+                <Itzel isAnimating={isItzelAnimating} isClickable={true} onClick={() => nextToTalk4('Itzel')}/>
+            </div>
             <div className="dialog_box">
                 <Dialog
                 className="dialog"
@@ -995,8 +1055,12 @@ function Tribunal({ closeRoom }) {
         {viewIndex === 8 && 
           (
             <div className='trib_story_container' id='trib_story_view8'>
-            <div className="character" id='tito' onClick={() => nextToTalk5('Tito')} onMouseOver={handleTitoClick}></div>
-            <div className="character" id='itzel' onClick={() => nextToTalk5('Itzel')} onMouseOver={handleItzelClick}></div>
+            <div className="character" id='tito' onMouseOver={() => handleTitoClick('Tito')}>
+                <Tito isAnimating={isTitoAnimating} isClickable={true} onClick={() => nextToTalk5('Tito')}/>
+            </div>
+            <div className="character" id='itzel' onMouseOver={() => handleItzelClick('Itzel')}>
+                <Itzel isAnimating={isItzelAnimating} isClickable={true} onClick={() => nextToTalk5('Itzel')}/>
+            </div>
             <div className="dialog_box">
                 <Dialog
                 className="dialog"

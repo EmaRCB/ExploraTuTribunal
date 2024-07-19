@@ -8,6 +8,7 @@ import Lupa from './components/lupa';
 import itzelVoice from './assets/sounds/itzel_voice.mp3';
 import titoVoice from './assets/sounds/tito_voice.mp3';
 import Tito from './components/Tito';
+import Itzel from './components/Itzel';
 
 function Pagina_Bienvenida({nextRoom}) {
   Pagina_Bienvenida.propTypes = {
@@ -15,6 +16,7 @@ function Pagina_Bienvenida({nextRoom}) {
   };
   const [viewIndex, setViewIndex] = useState(0);
   const [isTitoAnimating, setTitoAnimating] = useState(false);
+  const [isItzelAnimating, setItzelAnimating] = useState(false);
 
   const dialogPages = [
     {
@@ -82,8 +84,15 @@ const toggleView = () => {
 const nextToTalk = (currentCharacter) => {
   let nextCharacter = dialogPages[viewIndex + 1]?.character;
   if (nextCharacter==currentCharacter){
-    console.log("Itzel2")
     toggleDialog();
+  }
+  if (nextCharacter=='Itzel'){
+    setItzelAnimating(true);
+    setTitoAnimating(false);
+  }
+  if (nextCharacter=='Tito'){
+    setItzelAnimating(false);
+    setTitoAnimating(true);
   }
 };
 
@@ -91,7 +100,7 @@ const nextToTalk = (currentCharacter) => {
     
     let nextCharacter = dialogPages[viewIndex + 1]?.character;
     if (nextCharacter==currentCharacter){
-      setTitoAnimating(true);
+      
       new Audio(titoVoice).play().catch(error => {
         console.error('Error playing audio:', error);
       });
@@ -102,6 +111,7 @@ const nextToTalk = (currentCharacter) => {
     
     let nextCharacter = dialogPages[viewIndex + 1]?.character;
     if (nextCharacter==currentCharacter){
+      
       new Audio(itzelVoice).play().catch(error => {
         console.error('Error playing audio:', error);
       });
@@ -112,19 +122,13 @@ const nextToTalk = (currentCharacter) => {
   return (
     <div className='pagina_1_container'>
         
-        <div 
-            className="character" 
-            id='tito'
-            onMouseOver={() => handleTitoClick('Tito')}
-            onMouseOut={() => setTitoAnimating(false)}
-          >
-            <Tito
-              isAnimating={isTitoAnimating}
-              isClickable={true}
-              onClick={() => nextToTalk('Tito')}
-            />
-          </div>
-        <div className="character" id='itzel' onClick={() => nextToTalk('Itzel')} onMouseOver={() => handleItzelClick('Itzel')}></div>
+        <div className="character" id='tito' onMouseOver={() => handleTitoClick('Tito')}>
+          <Tito isAnimating={isTitoAnimating} isClickable={true} onClick={() => nextToTalk('Tito')}/>
+        </div>
+        <div className="character" id='itzel' onMouseOver={() => handleItzelClick('Itzel')}>
+          <Itzel isAnimating={isItzelAnimating} isClickable={true} onClick={() => nextToTalk('Itzel')}/>
+        </div>
+      
         <div className="dialog_box">
           <Dialog
             className="dialog"

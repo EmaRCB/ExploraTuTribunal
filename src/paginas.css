@@ -3,10 +3,10 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
-    height: 40vmin;
     width: 20vmin;
-    
   }
+
+
 
   .sala, .container{
     height: 100%;
@@ -21,7 +21,6 @@
 #itzel{
     right: 100px;
     bottom: 100px;
-    background-image: url("../src/assets/tito/Itzel_01.png");
 }
 
 .dialog_box{
@@ -41,15 +40,7 @@
     cursor: pointer;
 }
 
-#tito:hover{
-  background-image: url("../src/assets/tito/Tito_02.png");
-  transform: scale(1.15);
-}
 
-#itzel:hover{
-  background-image: url("../src/assets/tito/Itzel_02.png");
-  transform: scale(1.15);
-}
 
   
   
