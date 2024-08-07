@@ -138,9 +138,10 @@ const nextToTalk = (currentCharacter) => {
             onToggle={toggleView}
           />
           
-          {(viewIndex === dialogPages.length - 1) ? (
-            <button className='next_button' onClick={nextRoom}>Finish</button>
-          ): <button className='next_button' onClick={toggleDialog}><img src="../imagenes/flecha-verde.png" height={25} alt="flecha" /></button>}
+          {viewIndex === dialogPages.length - 1 && (
+            <button className='next_button' onClick={nextRoom}>Continuar</button>
+          )}
+          
       
       </div>
       <Lupa sala="Entrada"></Lupa>

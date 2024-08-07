@@ -170,9 +170,10 @@ function Pagina_Sala_Psicologia({ closeRoom }) {
               onToggle={toggleView}
             />
             
-            {(viewPage === dialogPages1.length - 1) ? (
-                <button className='next_button' onClick={toggleView}>Comenzar</button>
-                ): <button className='next_button' onClick={toggleDialog1}><img src="../imagenes/flecha-verde.png" height={25} alt="flecha" /></button>}
+            {viewIndex === dialogPages1.length - 1 && (
+            <button className='next_button' onClick={toggleView}>Continuar</button>
+          )}
+            
           </div>
       </div>
     )}
@@ -231,9 +232,10 @@ function Pagina_Sala_Psicologia({ closeRoom }) {
               onToggle={toggleView}
             />
             
-            {(viewPage === dialogPages2.length - 1) ? (
-                <button className='next_button' onClick={closeRoom}>Finalizar</button>
-                ): <button className='next_button' onClick={toggleDialog2}><img src="../imagenes/flecha-verde.png" height={25} alt="flecha" /></button>}
+            {viewIndex === dialogPages2.length - 1 && (
+            <button className='next_button' onClick={closeRoom}>Continuar</button>
+          )}
+            
           </div>
       </div>
     )}

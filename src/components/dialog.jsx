@@ -62,7 +62,6 @@ const Dialog = ({ title, content, character }) => {
           
         </div>
       )}
-      <button className='next_button' onClick={closeDialog}>Cerrar</button>
     </div>
   );
 };
