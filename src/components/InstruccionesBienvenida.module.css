@@ -1,3 +1,20 @@
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.pulseText {
+  display: inline-block;
+  animation: pulse 1s infinite;
+}
+
 .overlay {
   position: fixed;
   top: 0;
@@ -12,7 +29,7 @@
 }
 
 .popup {
-  background: white;
+  background: rgb(247, 200, 255);
   padding: 2em;
   border-radius: 0.5em;
   text-align: center;
@@ -34,23 +51,26 @@
 }
 
 .video {
-  max-width: 100%;
+  max-width: 75%; /* Ajusta el tamaño del video */
   max-height: 60vh;
 }
 
-.okButton {
-  padding: 0.5em 1em;
-  background-color: #3595fc;
-  color: white;
-  border: none;
-  border-radius: 0.25em;
-  cursor: pointer;
-  width: 25%; /* Ajusta el tamaño del botón */
-  margin: 0 auto;
+.exampleVideo {
+  border: 3px dashed red; /* Borde punteado rojo */
+  padding: 5px; /* Espacio entre el borde y el video */
 }
 
-.okButton:hover {
-  background-color: #0056b3;
+.forwardArrow {
+  width: 50px; /* Ajusta el tamaño de la flecha */
+  height: auto;
+  cursor: pointer;
+  margin: 0 auto;
+  display: inline-block;
+  animation: pulse 1s infinite;
+}
+
+.forwardArrow:hover {
+  animation: none; /* Detiene la animación al pasar el mouse */
 }
 
 .closeButton {

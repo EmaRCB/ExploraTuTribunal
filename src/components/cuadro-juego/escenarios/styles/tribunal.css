@@ -1,0 +1,86 @@
+.tribunal_container{
+  display: flex;
+  height: 100%;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.description_box{
+  position: absolute;
+  bottom: 20vh;
+  padding: 1vw;
+  width: 30vw;
+  height: fit-content;
+  background-color: #06740f;
+  opacity: 90%;
+  font-size: medium;
+  color: rgb(255, 255, 255);
+}
+
+#juez, #abogado, #policia, #testigo{
+  right: 100px;
+  bottom: 100px;
+}
+
+.tribunal-grid {
+    display: grid;
+    height: 100%;
+    width: 100%;
+    grid-template-columns: auto auto auto;
+  }
+
+.trib_story_container{
+  display: flex;
+  height: 100%;
+  width: 100%;
+  
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#trib_story_view0{
+  background-image: url("../../../../assets/bg/tribunal/TA_Escenarios-02.png"); 
+  background-color: white;
+  background-size: cover;
+}
+
+#trib_story_view1{
+  background-image: url("../../../../assets/bg/tribunal/TA_Escenarios-07.png"); 
+  background-color: white;
+  background-size: cover;
+}
+
+#trib_story_view2, #trib_story_view3{
+  background-image: url("../../../../assets/bg/tribunal/TA_Escenarios-09.png"); 
+  background-color: white;
+  background-size: cover;
+}
+
+#trib_story_view4, #trib_story_view5{
+  background-image: url("../../../../assets/bg/tribunal/TA_Escenarios-10.png"); 
+  background-color: white;
+  background-size: cover;
+}
+
+#trib_story_view6, #trib_story_view7{
+  background-image: url("../../../../assets/bg/tribunal/TA_Escenarios-11.png"); 
+  background-color: white;
+  background-size: cover;
+}
+
+#trib_story_view8{
+  background-image: url("../../../../assets/bg/tribunal/TA_Escenarios-12.png"); 
+  background-color: white;
+  background-size: cover;
+}
+
+.tribu-item {
+    margin: 50px 0px 0px 50px;
+    /*border: 1px solid rgba(0, 0, 0, 0.8);
+    padding: 20px;*/
+    font-size: 30px;
+    text-align: center;
+  }

@@ -1,0 +1,43 @@
+.dialog {
+  position: relative;
+  background: white;
+  padding: 1em;
+  border-radius: 0.5em;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  max-width: 90%;
+  max-height: 90%;
+  margin: 1em auto;
+}
+
+.closeButton {
+  position: absolute;
+  top: 0.5em;
+  right: 0.5em;
+  background: none;
+  border: none;
+  font-size: 1.5em;
+  cursor: pointer;
+}
+
+.okButton {
+  margin-top: 1em;
+  padding: 0.5em 1em;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 0.25em;
+  cursor: pointer;
+}
+
+.okButton:hover {
+  background-color: #0056b3;
+}
+
+.characterImage {
+  position: absolute;
+  top: 10px; /* Ajusta la distancia desde la parte superior */
+  left: 10px; /* Ajusta la distancia desde la parte izquierda */
+  width: 50px; /* Ajusta el tamaño de la imagen del personaje */
+  height: auto;
+}

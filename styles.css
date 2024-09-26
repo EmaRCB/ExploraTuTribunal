@@ -1,15 +1,23 @@
+@import './src/styles/normalize.css';
+
 body, html {
-    margin: 0;
-    padding: 0;
-    font-family: 'Arial', sans-serif;
-    background: #f7f7f7;
-    position: relative;
+  margin: 0;
+  padding: 0;
+  font-family: 'Arial', sans-serif;
+  background: #f7f7f7;
+  position: relative;
+  background-image: url('./src/assets/bg/bg.png'); /* Ruta de la imagen de fondo */
+  background-size: cover; /* Asegura que la imagen cubra todo el fondo */
+  background-repeat: no-repeat; /* Evita que la imagen se repita */
+  background-position: center; /* Centra la imagen de fondo */
 }
+
 
 .wrapper {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    width: 100%;
 }
 
 .header {
@@ -90,7 +98,10 @@ body, html {
     opacity: 0.85;
 }
 .game-content {
-    flex-grow: 1;
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .footer {

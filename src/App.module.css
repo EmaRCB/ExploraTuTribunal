@@ -1,0 +1,27 @@
+.wrapper {
+    display: grid;
+    grid-template-columns: 20% 60% 20%;
+    justify-items: center;
+    align-items: end;
+    width: 100%;
+}
+
+.centerContent {
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%; /* Asegúrate de que este contenedor ocupe todo el espacio */
+    width: 100%;
+}
+
+.gameContainer {
+    border: 1em solid green; /* Usa em para que el borde se ajuste proporcionalmente */
+    border-radius: 1em; /* Usa em para el radio del borde */
+    height: 70vh; /* Ajustado para mantener la relación de aspecto */
+    width: 52.5vw; /* Calculado para mantener la proporción */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+

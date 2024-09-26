@@ -1,0 +1,381 @@
+[
+  {
+    "id": 1,
+    "scenario": "Bienvenida",
+    "dialogs": [
+      {
+        "order": 1,
+        "character": "Tito",
+        "content": "¡Hola Itzel! ¡Bienvenida a la Fiscalía General del Estado de Yucatán! ¿Qué haces acá?"
+      },
+      {
+        "order": 2,
+        "character": "Itzel",
+        "content": "¡Hola Tito! Un amigo está en un proceso legal y quiero saber cómo es, ¡para poder entender lo que pasa y ayudarlo!"
+      },
+      {
+        "order": 3,
+        "character": "Tito",
+        "content": "¡Yo te puedo acompañar! ¡Vamos! Aquí es donde se hacen cumplir las leyes."
+      },
+      {
+        "order": 4,
+        "character": "Tito",
+        "content": "Hoy vamos a tener una visita especial para que puedas aprender más sobre cómo funciona nuestro Sistema Legal."
+      },
+      {
+        "order": 5,
+        "character": "Tito",
+        "content": "Las leyes, son reglas que las personas tenemos que obedecer, sirven para cuidarnos. Y el Sistema Legal, son todos estos lugares en donde cumplimos las leyes, en donde están todas las personas que nos van a ayudar."
+      },
+      {
+        "order": 6,
+        "character": "Tito",
+        "content": "Un delito es cuando una persona lastima a una niña o un niño y le hace daño. Este lugar se llama Fiscalía, aquí se investigan los delitos para poder cuidar a las niñas y los niños y que se haga justicia."
+      },
+      {
+        "order": 7,
+        "character": "Itzel",
+        "content": "¡Uay! La Fiscalía muy grande."
+      },
+      {
+        "order": 8,
+        "character": "Tito",
+        "content": "No te preocupes, no estarás sola. Juntos vamos a ver los diferentes lugares que puedes encontrar aquí y vamos a conocer a las personas que le ayudarán a tu amigo , también vamos a aprender la importancia de la justicia y los derechos que tenemos."
+      },
+      {
+        "order": 9,
+        "character": "Tito",
+        "content": "¡Vamos a comenzar esta emocionante aventura!"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "scenario": "SalaJuegos",
+    "dialogs": [
+      {
+        "order": 1,
+        "character": "Tito",
+        "content": "Esta es la sala de juegos. ¡Aquí hay muchos juguetes con los que puedes jugar mientras pasamos al siguiente lugar!"
+      },
+      {
+        "order": 2,
+        "character": "Itzel",
+        "content": "¡Wow! Me gusta mucho cómo se ve"
+      },
+      {
+        "order": 3,
+        "character": "Tito",
+        "content": "Tenemos muchos juguetes y actividades para que tu amigo se divierta mientras espera"
+      },
+      {
+        "order": 4,
+        "character": "Itzel",
+        "content": "¡Wow! Pero, ¿con quién va a jugar?"
+      },
+      {
+        "order": 5,
+        "character": "Tito",
+        "content": "¡En este lugar hay muchos más niñas y niños como tú! Así que no estará solo"
+      },
+      {
+        "order": 6,
+        "character": "Itzel",
+        "content": "¡Qué divertido!"
+      },
+      {
+        "order": 7,
+        "character": "Tito",
+        "content": "Así es. Este lugar está hecho para hacer tu visita más cómoda."
+      },
+      {
+        "order": 8,
+        "character": "Tito",
+        "content": "¡Pasemos a la siguiente sala!"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "scenario": "Oficina",
+    "dialogs": [
+      {
+        "order": 1,
+        "character": "Itzel",
+        "content": "¿Y esta oficina?, ¿Qué lugar es?"
+      },
+      {
+        "order": 2,
+        "character": "Tito",
+        "content": "¡Oh! Este lugar es para que las niñas y niños como tu amigo le cuenten al Fiscal qué es lo que les pasó."
+      },
+      {
+        "order": 3,
+        "character": "Itzel",
+        "content": "¿Qué es un Fiscal?"
+      },
+      {
+        "order": 4,
+        "character": "Tito",
+        "content": "Un Fiscal es una persona que busca toda la información para investigar lo que le pasó a las niñas y niños que vienen a este lugar, para que así puedan cuidarles."
+      },
+      {
+        "order": 5,
+        "character": "Tito",
+        "content": "¿En qué lugar podemos poner al fiscal?"
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "scenario": "Oficina",
+    "dialogs": [
+      {
+        "order": 1,
+        "character": "Tito",
+        "content": "¡Muy bien! Ahí va el Fiscal"
+      },
+      {
+        "order": 2,
+        "character": "Itzel",
+        "content": "¡Wow! ¿Y por qué tenemos que hablar con un Fiscal?"
+      },
+      {
+        "order": 3,
+        "character": "Tito",
+        "content": "Es muy importante que las niñas y niños le cuenten al Fiscal lo que les pasó, porque si el Fiscal no sabe lo que pasó, no va a poder investigar para ayudarles."
+      },
+      {
+        "order": 4,
+        "character": "Itzel",
+        "content": "¡Ya entiendo! Gracias por explicarme Tito"
+      },
+      {
+        "order": 5,
+        "character": "Tito",
+        "content": "Hora de ir a otra sala"
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "scenario": "SalaMedicina",
+    "dialogs": [
+      {
+        "order": 1,
+        "character": "Tito",
+        "content": "Bienvenida a la sala de medicina. Aquí estarás con una doctora o un doctor que te van a ayudar."
+      },
+      {
+        "order": 2,
+        "character": "Itzel",
+        "content": "Pero me dan miedo venir al doctor. ¡No me gustan las inyecciones!"
+      },
+      {
+        "order": 3,
+        "character": "Tito",
+        "content": "No te preocupes Itzel, ¡aquí no ponen inyecciones!"
+      },
+      {
+        "order": 4,
+        "character": "Tito",
+        "content": "Aquí, la doctora va a revisar a tu amigo para ver si hay algo que le duele y lo puedan curar."
+      },
+      {
+        "order": 5,
+        "character": "Itzel",
+        "content": "¡Ah! Es importante"
+      },
+      {
+        "order": 6,
+        "character": "Tito",
+        "content": "¿En donde va la doctora?"
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "scenario": "SalaMedicina",
+    "dialogs": [
+      {
+        "order": 1,
+        "character": "Tito",
+        "content": "Así es. Igual es importante que le digas dónde te duele para saber cómo ayudarte."
+      },
+      {
+        "order": 2,
+        "character": "Itzel",
+        "content": "¡Entendido!"
+      },
+      {
+        "order": 3,
+        "character": "Tito",
+        "content": "¡Qué bien! Vamos a explorar otro lugar"
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "scenario": "SalaPsicologia",
+    "dialogs": [
+      {
+        "order": 1,
+        "character": "Tito",
+        "content": "¡Bienvenida a la sala de psicología!"
+      },
+      {
+        "order": 2,
+        "character": "Itzel",
+        "content": "¿Qué es eso?"
+      },
+      {
+        "order": 3,
+        "character": "Tito",
+        "content": "¡Aquí puedes platicar con una psicóloga! Las psicólogas y psicólogos son personas que platican con niñas y niños como tú, para poder entender qué sienten y cómo ayudarles."
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "scenario": "SalaPsicologia",
+    "dialogs": [
+      {
+        "order": 1,
+        "character": "Tito",
+        "content": "¡Muy bien! Tu amigo va a poder hablar de cómo se siente y de lo que piensa."
+      },
+      {
+        "order": 2,
+        "character": "Itzel",
+        "content": "¡Oh! Eso es importante"
+      },
+      {
+        "order": 3,
+        "character": "Tito",
+        "content": "Sí, este es un lugar de confianza. Aquí pueden ayudarte a entender tus emociones."
+      },
+      {
+        "order": 4,
+        "character": "Itzel",
+        "content": "¡Uay! espero que puedan ayudar a todas las niñas y niños que vengan a este lugar."
+      },
+      {
+        "order": 5,
+        "character": "Tito",
+        "content": "¡Claro! Bueno, sigamos"
+      }
+    ]
+  },
+  {
+    "id": 9,
+    "scenario": "Tribunal",
+    "dialogs": [
+      {
+        "order": 1,
+        "character": "Tito",
+        "content": "¡Bienvenida al Tribunal de Justicia! Aquí se hacen los juicios y se hace cumplir la Ley. En los juicios van a hablar de lo que pasó para decir cómo pueden ayudarte."
+      },
+      {
+        "order": 2,
+        "character": "Tito",
+        "content": "Aquí, hay muchas personas que te ayudarán."
+      },
+      {
+        "order": 3,
+        "character": "Itzel",
+        "content": "¿Quiénes son esas personas?"
+      },
+      {
+        "order": 4,
+        "character": "Tito",
+        "content": "Ya conocimos a algunas personas de las otras salas, pero también hay personas que no hemos visto ¡pero todas son importantes!"
+      },
+      {
+        "order": 5,
+        "character": "Tito",
+        "content": "Yo te ayudaré. Te voy a presentar a una persona y tú me vas a ayudar a buscar en donde la podemos poner."
+      },
+      {
+        "order": 6,
+        "character": "Tito",
+        "content": "¡Vamos a empezar!"
+      }
+    ]
+  },
+  {
+    "id": 10,
+    "scenario": "Tribunal",
+    "dialogs": [
+      {
+        "order": 1,
+        "character": "Tito",
+        "content": "¡Correcto! Ahí va el Juez. Continuemos."
+      }
+    ]
+  },
+  {
+    "id": 11,
+    "scenario": "Tribunal",
+    "dialogs": [
+      {
+        "order": 1,
+        "character": "Tito",
+        "content": "¡Correcto! Ahí va el Abogado."
+      },
+      {
+        "order": 2,
+        "character": "Itzel",
+        "content": "¡Qué bien! ¿y sólo hay un abogado en el Juicio?"
+      },
+      {
+        "order": 3,
+        "character": "Tito",
+        "content": "¡Muy buena pregunta! Así como tu amigo tendrá un abogado que lo defienda, también va a haber un abogado que acompañe a la otra persona. Porque todas las personas tienen el derecho de recibir apoyo de una abogada o abogado."
+      },
+      {
+        "order": 4,
+        "character": "Tito",
+        "content": "Continuemos"
+      }
+    ]
+  },
+  {
+    "id": 12,
+    "scenario": "Tribunal",
+    "dialogs": [
+      {
+        "order": 1,
+        "character": "Tito",
+        "content": "Muy bien! Ahí va el policía"
+      }
+    ]
+  },
+  {
+    "id": 13,
+    "scenario": "Tribunal",
+    "dialogs": [
+      {
+        "order": 1,
+        "character": "Tito",
+        "content": "¡Felicidades! Ahí va el testigo."
+      },
+      {
+        "order": 2,
+        "character": "Tito",
+        "content": "Estas personas trabajan juntas para hacer que se cumpla la Ley y poder ayudar a tu amigo y a todas las niñas y niños que vienen al Tribunal."
+      },
+      {
+        "order": 3,
+        "character": "Itzel",
+        "content": "¡Wow! Qué bueno que hay muchas personas que van a ayudar a mi amigo y a todas las niñas y niños que estén aquí."
+      },
+      {
+        "order": 4,
+        "character": "Tito",
+        "content": "Así es, es hora de terminar nuestro paseo por el Tribunal."
+      }
+    ]
+  }
+  
+]
