@@ -1,73 +1,159 @@
-import './App.css';
-import './pagina_bienvenida.css';
-import './paginas.css';
-import { useState } from 'react';
-import Dialog from './components/dialog';
+import React, { useState, useEffect } from 'react';
+import styles from './App.module.css';
+import Tito from './components/personajes/Tito.jsx';
+import Itzel from './components/personajes/Itzel.jsx';
+import Bienvenida from './components/cuadro-juego/escenarios/Bienvenida.jsx';
+import Pasillo from './components/cuadro-juego/escenarios/pasillo.jsx';
+import dialogos from './components/cuadro-juego/dialogos/dialogos.json';
+import InstruccionesPasillo from './components/InstruccionesPasillo.jsx';
+import InstruccionesBienvenida from './components/InstruccionesBienvenida.jsx'
+import Pagina_Sala_Juegos from './components/cuadro-juego/escenarios/pagina_sala_juegos.jsx';
 
-
-function Pagina_Prueba() {
-
+function App() {
+  const [dialogs, setDialogs] = useState([]);
+  const [currentDialogIndex, setCurrentDialogIndex] = useState(-1);
+  const [showDialog, setShowDialog] = useState(false);
   const [viewIndex, setViewIndex] = useState(0);
-  const [currentPage, setCurrentPage] = useState(0);
-  const dialogPages = [
-    {
-      title: "Tito:",
-      content: "¡Hola Itzel! ¡Bienvenida a nuestro tribunal de justicia! ¿Qué haces acá?",
-      character: "Tito"
-    },
-    {
-      title: "Itzel:",
-      content: "Hola, Tito!, Un amiguito sigue un proceso legal y quiero saber cómo es, para poder comprender lo que pasa y ayudarlo!",
-      character: "Itzel"
-    },
-    {
-      title: "Tito:",
-      content: "Hoy vamos a tener una visita especial para que puedan aprender más sobre cómo funciona nuestro sistema legal. ¡Yo te puedo acompañar! ¡Vamos!",
-      character: "Tito"
-    },
-    {
-      title: "Tito:",
-      content: "Aquí se investigan los hechos que se relacionan con delitos de muchos tipos, para garantizar que los ciudadanos, incluyendo niñas y niños, reciban justician cuando han sido victimas de algún delito.",
-      character: "Itzel"
-    }
-  ];
+  const [titoAnimating, setTitoAnimating] = useState(false);
+  const [itzelAnimating, setItzelAnimating] = useState(false);
+  const [titoClickable, setTitoClickable] = useState(false);
+  const [itzelClickable, setItzelClickable] = useState(false);
+  const [isTitoVisible, setIsTitoVisible] = useState(true); 
+  const [isItzelVisible, setIsItzelVisible] = useState(true); 
+  const [showPopup, setShowPopup] = useState(true); // ESTA LÍNEA SE AGREGÓ
+  const dialog = 2;
 
-
-  const toggleView = () => {
-    setViewIndex((prevIndex) => (prevIndex + 1) % dialogPages.length);
-    const nextIndex = viewIndex + 1;
-
-    if (nextIndex === dialogPages.length) {
-      alert("xd");
-      toggleDialog();
-
+  useEffect(() => {
+    const id = 1; // Asume que siempre quieres los diálogos con id 1
+    const foundDialogs = dialogos.find(dialogo => dialogo.id === dialog);
+    if (foundDialogs) {
+      setDialogs(foundDialogs.dialogs);
+      setCurrentDialogIndex(-1);
+      setInitialCharacterState(foundDialogs.dialogs);
     } else {
-      setCurrentPage(0);
+      setDialogs([]);
+      setCurrentDialogIndex(-1);
+    }
+  }, []);
+
+
+  const setInitialCharacterState = (dialogs) => {
+    if (dialogs.length > 0) {
+      const firstCharacter = dialogs[0].character;
+      if (firstCharacter === 'Tito') {
+        setTitoAnimating(true);
+        setItzelAnimating(false);
+        setTitoClickable(true);
+        setItzelClickable(false);
+      } else {
+        setTitoAnimating(false);
+        setItzelAnimating(true);
+        setTitoClickable(false);
+        setItzelClickable(true);
+      }
     }
   };
 
-  const toggleDialog = () => {
-    const nextIndex = (currentPage + 1) % dialogPages.length;
-    setCurrentPage(nextIndex);
+  const nextRoom = () => {
+    setViewIndex(dialog);
+  }
+
+
+  const handleNext = () => {
+    if (currentDialogIndex < dialogs.length - 1) {
+      const nextIndex = currentDialogIndex + 1;
+      setCurrentDialogIndex(nextIndex);
+      setShowDialog(true); // Mostrar el cuadro de diálogo
+      updateCharacterState(nextIndex);
+    } else {
+      // Al llegar al último diálogo, detener ambas animaciones y desactivar clics
+      setTitoAnimating(false);
+      setItzelAnimating(false);
+      setTitoClickable(false);
+      setItzelClickable(false);
+    }
   };
+
+
+  const handleCloseDialog = () => {
+    setShowDialog(false); // Cerrar el cuadro de diálogo
+  };
+
+  const updateCharacterState = (index) => {
+    if (index + 1 < dialogs.length) {
+      const nextCharacter = dialogs[index + 1].character;
+      if (nextCharacter === 'Tito') {
+        setTitoAnimating(true);
+        setItzelAnimating(false);
+        setTitoClickable(true);
+        setItzelClickable(false);
+      } else {
+        setTitoAnimating(false);
+        setItzelAnimating(true);
+        setTitoClickable(false);
+        setItzelClickable(true);
+      }
+    } else {
+      // Al llegar al último diálogo, detener ambas animaciones y desactivar clics
+      setTitoAnimating(false);
+      setItzelAnimating(false);
+      setTitoClickable(false);
+      setItzelClickable(false);
+    }
+  };
+
+  const handlePopupClose = () => {
+    setShowPopup(false); //ESTA LÍNEA SE AGREGÓ
+  };
+
+  const currentDialog = dialogs[currentDialogIndex];
+  const isLastDialog = currentDialogIndex === dialogs.length - 1;
 
   return (
-    <div className='pagina_container'>
-      <div className="character" id='tito'></div>
-      <div className="character" id='itzel'></div>
-      <div className="dialog_box">
-        <Dialog
-              className="dialog"
-              title={dialogPages[viewIndex].title}
-              content={dialogPages[viewIndex].content}
-              character={dialogPages[viewIndex].character}
-              onToggle={toggleView}
-              currentPage={currentPage}
-              pages={dialogPages}
-            />
+    <div className={styles.wrapper}>
+      {showPopup && <InstruccionesBienvenida onClose={handlePopupClose} />} {/* ESTA LÍNEA SE AGREGÓ */}
+      {isTitoVisible && (
+      <div>
+        <Tito isAnimating={titoAnimating} isClickable={titoClickable} onClick={handleNext} />
       </div>
+      )}
+      <div className={`${styles.gameContainer} ${styles.centerContent}`}>
+          {viewIndex === 0 && (
+              <Bienvenida
+                dialog={currentDialog}
+                onNext={handleNext}
+                showDialog={showDialog}
+                onCloseDialog={handleCloseDialog}
+                isLastDialog={isLastDialog}
+                nextRoom={nextRoom}
+              />
+              
+            )}
+            {viewIndex === 1 &&  (
+                <Pasillo
+                  nextRoom={nextRoom}
+                />
+              )    
+            }
+            {viewIndex === 2 &&  (
+                <Pagina_Sala_Juegos
+                dialog={currentDialog}
+                onNext={handleNext}
+                showDialog={showDialog}
+                onCloseDialog={handleCloseDialog}
+                isLastDialog={isLastDialog}
+                nextRoom={nextRoom}
+                />
+              )    
+            }
+      </div>
+      {isItzelVisible && (
+      <div>
+        <Itzel isAnimating={itzelAnimating} isClickable={itzelClickable} onClick={handleNext} />
+      </div>
+      )}
     </div>
   );
 }
 
-export default Pagina_Prueba;
+export default App;

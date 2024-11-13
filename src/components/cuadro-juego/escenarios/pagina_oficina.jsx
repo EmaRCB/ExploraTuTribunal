@@ -1,220 +1,114 @@
-import './styles/App.css';
-import './styles/pagina_oficina.css';
-import './styles/paginas.css';
-import { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { DragDropContainer, DropTarget } from 'react-drag-drop-container';
-
-import Dialog from '../dialogos/Dialogo.jsx';
-import Lupa from './lupa';
-import Tito from '../../personajes/Tito.jsx';
-import Itzel from '../../personajes/Itzel.jsx';
+import styles from './styles/Sala-Oficina.module.css';
+import Dialogo from '../dialogos/Dialogo';
+import smallImage from '../../../assets/photo_camera.svg'; // La imagen pequeña que servirá como botón
+import realImage from '../../../assets/bg/salasReales/sala_tribunal.png'; // La imagen real del lugar
+import closeIcon from '../../../assets/close-one.png'; // La imagen de la tache
+import dialogSound from '../../../assets/sounds/dialog_sound.mp3'; // Importa el archivo de sonido
 import FiscalImg from '../../../assets/tito/personajes/TA_Fiscal.png';
 import blank from '../../../assets/bg/blank.png';
-import itzelVoice from '../../../assets/sounds/itzel_voice.mp3';
-import titoVoice from '../../../assets/sounds/tito_voice.mp3';
 
+import { DragDropContainer, DropTarget } from 'react-drag-drop-container';
 
-function Pagina_Oficina({ closeRoom }) {
-  Pagina_Oficina.propTypes = {
-    closeRoom: PropTypes.func.isRequired,
-  };
+function Pagina_Oficina({ dialogGroups, onNext, showDialog, onCloseDialog, isLastDialog, nextRoom }) {
+  const [showPopup, setShowPopup] = useState(false);
+  const [showStory, setStory] = useState(true);
+  const [showGame, setGame] = useState(false);
+  const [currentGroupIndex, setCurrentGroupIndex] = useState(0); // Para controlar qué grupo de diálogos se está mostrando
+  const [currentDialogIndex, setCurrentDialogIndex] = useState(0); // Para controlar qué diálogo dentro del grupo se está mostrando
 
-  const [viewIndex, setViewIndex] = useState(0);
-  const [viewPage, setPageIndex] = useState(0);
-  const [isTitoAnimating, setTitoAnimating] = useState(false);
-  const [isItzelAnimating, setItzelAnimating] = useState(false);
+  // Obtener el diálogo actual
+  const currentDialog = dialogGroups?.[currentGroupIndex]?.[currentDialogIndex] || null;
 
-  const dialogPages1 = [
-    {
-      title: "Itzel:",
-      content: "¿Y esta oficina?, ¿Qué lugar es?",
-      character: "Itzel"
-    },
-    {
-      title: "Tito:",
-      content: "¡Oh! Este lugar es para que las niñas y niños como tu amigo le cuenten al Fiscal qué es lo que les  pasó.",
-      character: "Tito"
-    },
-    {
-      title: "Itzel:",
-      content: "¿Qué es un Fiscal?",
-      character: "Itzel"
+  useEffect(() => {
+    
+    console.log("dialogGroups:", dialogGroups);
+
+    if (showDialog && currentDialog) {
+      const audio = new Audio(dialogSound);
+      audio.play();
     }
-    ,
-    {
-      title: "Tito:",
-      content: "Un Fiscal es una persona que busca toda la información para investigar lo que le pasó a las niñas y niños que vienen a este lugar, para que así puedan cuidarles.",
-      character: "Tito"
-    },
-    {
-      title: "Tito:",
-      content: "¿En qué lugar podemos poner al fiscal?",
-      character: "Tito"
-    }
-  ];
+  }, [showDialog, currentDialog, dialogGroups]);
 
-  const dialogPages2 = [
-    {
-      title: 'Tito:',
-      content: "¡Muy bien! Ahí va el Fiscal",
-      character: "Tito"
-    },
-    {
-      title: "Itzel:",
-      content: "¡Wow! ¿Y por qué tenemos que hablar con un Fiscal?",
-      character: "Itzel"
-    },
-    {
-      title: "Tito:",
-      content: "Es muy importante que las niñas y niños le cuenten al Fiscal lo que les pasó, porque si el Fiscal no sabe lo que pasó, no va a poder investigar para ayudarles.",
-      character: "Tito"
-    },
-    {
-      title: "Itzel:",
-      content: "¡Ya entiendo! Gracias por explicarme Tito",
-      character: "Itzel"
-    },
-    {
-      title: "Tito:",
-      content: "Hora de ir a otra sala",
-      character: "Tito"
-    }
-  ];
-  
+  const handleNextDialog = () => {
+    console.log("Advancing dialog: currentDialogIndex:", currentDialogIndex, " currentGroupIndex:", currentGroupIndex);
 
-  const toggleDialog1 = () => {
-    let beat = new Audio('https://commondatastorage.googleapis.com/codeskulptor-assets/week7-brrring.m4a');
-    beat.play();
-    console.log(viewPage);
-    setPageIndex((prevDialog) => (prevDialog + 1) % dialogPages1.length);
-  };
-
-  const toggleDialog2 = () => {
-    let beat = new Audio('https://commondatastorage.googleapis.com/codeskulptor-assets/week7-brrring.m4a');
-    beat.play();
-    console.log(viewPage);
-    setPageIndex((prevDialog) => (prevDialog + 1) % dialogPages2.length);
-  };
-
-
-  const toggleView = () => {
-    let beat = new Audio('https://commondatastorage.googleapis.com/codeskulptor-assets/week7-brrring.m4a');
-    beat.play();
-    setViewIndex((prevIndex) => (prevIndex + 1) % 9);
-  };
-
-  const nextToTalk1 = (currentCharacter) => {
-    let nextCharacter = dialogPages1[viewPage + 1]?.character;
-    if (nextCharacter==currentCharacter){
-      console.log("Itzel2")
-      toggleDialog1();
-    }
-    if (nextCharacter=='Itzel'){
-      setItzelAnimating(true);
-      setTitoAnimating(false);
-    }
-    if (nextCharacter=='Tito'){
-      setItzelAnimating(false);
-      setTitoAnimating(true);
+    if (currentDialogIndex < dialogGroups[currentGroupIndex].length - 1) {
+      setCurrentDialogIndex(currentDialogIndex + 1); // Avanza al siguiente diálogo en el mismo grupo
+    } else if (currentGroupIndex < dialogGroups.length - 1) {
+      setStory(false);
+      setGame(true);
+      
+      //setCurrentGroupIndex(currentGroupIndex + 1); // Avanza al siguiente grupo de diálogos
+      //setCurrentDialogIndex(0); // Reinicia el índice del diálogo
+      //showDialog(false);
+    } else {
+      console.log('Todos los diálogos han terminado');
     }
   };
 
-  const nextToTalk2 = (currentCharacter) => {
-    let nextCharacter = dialogPages2[viewPage + 1]?.character;
-    if (nextCharacter==currentCharacter){
-      console.log("Itzel2")
-      toggleDialog2();
-    }
-    if (nextCharacter=='Itzel'){
-      setItzelAnimating(true);
-      setTitoAnimating(false);
-    }
-    if (nextCharacter=='Tito'){
-      setItzelAnimating(false);
-      setTitoAnimating(true);
-    }
+
+  const handleOpenPopup = () => {
+    setShowPopup(true);
+  };
+
+  const handleClosePopup = () => {
+    setShowPopup(false);
   };
 
   const itemEnters = () => {
-    console.log("Caja de pSICOLOGA");
-    setPageIndex(0);
+    window.alert("xdd");
+    console.log("Caja de doctora");
     let beat = new Audio('http://starmen.net/mother1/music/08%20-%20MOTHER%20-%20You%20Won.mp3');
     beat.play();
-    console.log(viewPage);
-    setViewIndex((prevIndex) => (prevIndex + 1) % 9);
+    setGame(false);
+    setStory(true);
+    setCurrentGroupIndex(currentGroupIndex + 1); // Avanza al siguiente grupo de diálogos
+    setCurrentDialogIndex(0); // Reinicia el índice del diálogo
   }
-
-  const handleTitoClick = () => {
-    new Audio(titoVoice).play().catch(error => {
-      console.error('Error playing audio:', error);
-    });
-  };
-
-  const handleItzelClick = () => {
-    new Audio(itzelVoice).play().catch(error => {
-      console.error('Error playing audio:', error);
-    });
-  };
 
   const state = {
     draggableVisibility: "block"
   };
 
   return (
-    <div className='pagina_oficina_container'>
-    
-    {viewIndex === 0 && (
-      <div className='story_container' id='of_story_view1'>
-        <div className="character" id='tito' onMouseOver={() => handleTitoClick('Tito')}>
-          <Tito isAnimating={isTitoAnimating} isClickable={true} onClick={() => nextToTalk1('Tito')}/>
+    <div className={styles.image}>
+      {currentDialog && showDialog && showStory && (
+        <div className={styles.storyContainer}>
+          <Dialogo
+            character={currentDialog.character}
+            text={currentDialog.content}
+            OKbutton={false} // Puedes ajustar esto según sea necesario
+            onClose={onCloseDialog}
+          />
         </div>
-        <div className="character" id='itzel' onMouseOver={() => handleItzelClick('Itzel')}>
-          <Itzel isAnimating={isItzelAnimating} isClickable={true} onClick={() => nextToTalk1('Itzel')}/>
-        </div>
-        <div className="object" id='laptop'></div>
-        <div className="dialog_box">
-            <Dialog
-              className="dialog"
-              title={dialogPages1[viewPage].title}
-              content={dialogPages1[viewPage].content}
-              character={dialogPages1[viewPage].character}
-              onToggle={toggleView}
-            />
-            
-            {(viewPage === dialogPages1.length - 1) ? (
-                <button className='next_button' onClick={toggleView}>Comenzar</button>
-                ): <button className='next_button' onClick={toggleDialog1}><img src="../imagenes/flecha-verde.png" height={25} alt="flecha" /></button>}
-          </div>
-      </div>
-    )}
-    {viewIndex === 1 && (
-      <div className='story_container' id='of_story_view2'>
-        <div className="character" id='tito' onClick={handleTitoClick}></div>
-        <div className="object" id='laptop'></div>
-        <div className='character' id='fiscal' style={{ display: "block" }}>
+        
+      )}
+      {showGame && (
+        <div className={styles.gameContainer}>
+          <div className={styles.character}>
             <DragDropContainer
-              targetKey="fiscal_target"
+              targetKey="doctora_target"
               style={{ display: state.draggableVisibility }}
-              dropData={{ type: "Fiscal" }}
+              dropData={{ type: "Doctora" }}
                         
             >
               <img
                 src={FiscalImg}
-                width="130px"
+                width="150px"
                 height="270px"
                 alt=""
               />
               </DragDropContainer>
-        </div>
-
-        <div className="fiscal-drop-target" id='fiscal-container'>
-                <DropTarget
+          </div>
+          <div className={styles.dropArea}>
+          <DropTarget
                     id="my_target"
-                    targetKey="fiscal_target"
+                    targetKey="doctora_target"
                     onHit={function () {
                       itemEnters();
-                        
+                      
                     }}
                     >
                     <img
@@ -225,35 +119,49 @@ function Pagina_Oficina({ closeRoom }) {
                     />
                 </DropTarget>
           </div>
-      </div>
-    )}
-    {viewIndex === 2 && (
-      <div className='story_container' id='of_story_view3'>
-        <div className="character" id='tito' onMouseOver={() => handleTitoClick('Tito')}>
-          <Tito isAnimating={isTitoAnimating} isClickable={true} onClick={() => nextToTalk2('Tito')}/>
-        </div>
-        <div className="character" id='itzel' onMouseOver={() => handleItzelClick('Itzel')}>
-          <Itzel isAnimating={isItzelAnimating} isClickable={true} onClick={() => nextToTalk2('Itzel')}/>
-        </div>
-        <div className="object" id='laptop'></div>
-        <div className="dialog_box">
-            <Dialog
-              className="dialog"
-              title={dialogPages2[viewPage].title}
-              content={dialogPages2[viewPage].content}
-              character={dialogPages2[viewPage].character}
-              onToggle={toggleView}
-            />
-            
-            {(viewPage === dialogPages2.length - 1) ? (
-                <button className='next_button' onClick={closeRoom}>Finalizar</button>
-                ): <button className='next_button' onClick={toggleDialog2}><img src="../imagenes/flecha-verde.png" height={25} alt="flecha" /></button>}
+          <div>
+
           </div>
-      </div>
-    )}
-    <Lupa sala="Oficina"></Lupa>
+        </div>
+      )}
+      {isLastDialog && (
+        <button className={styles.continueButton} onClick={nextRoom}>Comenzar</button>
+      )}
+      
+      {false && currentDialog && (
+        <button className={styles.nextButton} onClick={handleNextDialog}>Next</button>
+      )}
+
+      <img src={smallImage} alt="Small Button" className={styles.smallButton} onClick={handleOpenPopup} />
+
+      {showPopup && (
+        <div className={styles.popupOverlay}>
+          <div className={styles.popupContent}>
+            <button className={styles.closeButton} onClick={handleClosePopup}>
+              <img src={closeIcon} alt="Close" className={styles.closeIcon} />
+            </button>
+            <img src={realImage} alt="Real Place" className={styles.realImage} />
+          </div>
+        </div>
+      )}
     </div>
   );
 }
+
+Pagina_Oficina.propTypes = {
+  dialogGroups: PropTypes.arrayOf(
+    PropTypes.arrayOf(
+      PropTypes.shape({
+        character: PropTypes.string.isRequired,
+        content: PropTypes.string.isRequired,
+      })
+    )
+  ).isRequired,
+  onNext: PropTypes.func.isRequired,
+  showDialog: PropTypes.bool.isRequired,
+  onCloseDialog: PropTypes.func.isRequired,
+  isLastDialog: PropTypes.bool.isRequired,
+  nextRoom: PropTypes.func.isRequired
+};
 
 export default Pagina_Oficina;

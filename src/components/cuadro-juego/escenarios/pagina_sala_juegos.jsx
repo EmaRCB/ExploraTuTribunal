@@ -1,146 +1,78 @@
 import './styles/App.css';
-import './styles/pagina_sala_juegos.css';
 import './styles/paginas.css';
-import { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-
-import Dialog from '../dialogos/Dialogo.jsx';
-import Lupa from './lupa';
-import Tito from '../../personajes/Tito.jsx';
-import Itzel from '../../personajes/Itzel.jsx';
-
-import itzelVoice from '../../../assets/sounds/itzel_voice.mp3';
-import titoVoice from '../../../assets/sounds/tito_voice.mp3';
+import styles from './styles/Sala-Juegos.module.css';
+import Dialogo from '../dialogos/Dialogo';
+import smallImage from '../../../assets/photo_camera.svg'; // La imagen pequeña que servirá como botón
+import realImage from '../../../assets/bg/salasReales/sala_juegos.png'; // La imagen real del lugar
+import closeIcon from '../../../assets/close-one.png'; // La imagen de la tache
+import dialogSound from '../../../assets/sounds/dialog_sound.mp3'; // Importa el archivo de sonido
 
 
-function Pagina_Sala_Juegos({ closeRoom }) {
-  Pagina_Sala_Juegos.propTypes = {
-    closeRoom: PropTypes.func.isRequired,
+function Pagina_Sala_Juegos({ dialog, onNext, showDialog, onCloseDialog, isLastDialog, nextRoom }) {
+  const [showPopup, setShowPopup] = useState(false);
+
+  useEffect(() => {
+    console.log("dialog:", dialog);
+    if (showDialog && dialog) {
+      const audio = new Audio(dialogSound);
+      audio.play();
+    }
+  }, [showDialog, dialog]);
+
+  const handleOpenPopup = () => {
+    setShowPopup(true);
   };
 
-  const [viewIndex, setViewIndex] = useState(0);
-  const [isTitoAnimating, setTitoAnimating] = useState(true);
-  const [isItzelAnimating, setItzelAnimating] = useState(false);
-  
-  const dialogPages = [
-    {
-      title: "Tito:",
-      content: "Esta es la sala de juegos. ¡Aquí hay muchos juguetes con los que puedes jugar mientras pasamos al siguiente lugar!",
-      character: "Tito"
-    },
-    {
-      title: "Itzel:",
-      content: "¡Wow! Me gusta mucho cómo se ve",
-      character: "Itzel"
-    }
-    ,
-    {
-      title: "Tito:",
-      content: "Tenemos muchos juguetes y actividades para que tu amigo se divierta mientras espera",
-      character: "Tito"
-    },
-    {
-      title: "Itzel:",
-      content: "¡Wow! Pero, ¿con quién va a jugar?",
-      character: "Itzel"
-    },
-    {
-      title: "Tito:",
-      content: "¡En este lugar hay muchos mas niñas y niños como tú! Así que no estará solo",
-      character: "Tito"
-    },
-    {
-      title: "Itzel:",
-      content: "¡Qué divertido!",
-      character: "Itzel"
-    },
-    {
-      title: "Tito:",
-      content: "Así es. Este lugar esta hecho para hacer tu visita más cómoda.",
-      character: "Tito"
-    },
-    {
-      title: "Tito:",
-      content: "¡Pasemos a la siguiente sala!",
-      character: "Tito"
-    }
-  ];
-
-  const toggleDialog = () => {
-    let beat = new Audio('https://commondatastorage.googleapis.com/codeskulptor-assets/week7-brrring.m4a');
-    beat.play();
-    setViewIndex((prevIndex) => (prevIndex + 1) % dialogPages.length);
-  };
-
-  const toggleView = () => {
-    let beat = new Audio('https://commondatastorage.googleapis.com/codeskulptor-assets/week7-brrring.m4a');
-    beat.play();
-    setViewIndex(0);
-  };
-
-  const nextToTalk = (currentCharacter) => {
-    let nextCharacter = dialogPages[viewIndex + 1]?.character;
-    if (nextCharacter=='Itzel'){
-      setItzelAnimating(true);
-      setTitoAnimating(false);
-    }
-    if (nextCharacter=='Tito'){
-      setItzelAnimating(false);
-      setTitoAnimating(true);
-    }
-    if (nextCharacter==currentCharacter){
-      console.log("Itzel2")
-      
-      toggleDialog();
-    }
-    
-  };
-
-  const handleTitoClick = (currentCharacter) => {
-    
-    let nextCharacter = dialogPages[viewIndex + 1]?.character;
-    if (nextCharacter==currentCharacter){
-      
-      new Audio(titoVoice).play().catch(error => {
-        console.error('Error playing audio:', error);
-      });
-    }
-  };
-
-  const handleItzelClick = (currentCharacter) => {
-    
-    let nextCharacter = dialogPages[viewIndex + 1]?.character;
-    if (nextCharacter==currentCharacter){
-      
-      new Audio(itzelVoice).play().catch(error => {
-        console.error('Error playing audio:', error);
-      });
-      
-    }
+  const handleClosePopup = () => {
+    setShowPopup(false);
   };
 
   return (
-    <div className='pagina_sala_juegos_container'>
+    <div className={styles.image}>
+      <div className={styles.pelota} ></div>
+      <div className={styles.oso} ></div>
+      {dialog && showDialog && (
+        <Dialogo
+          character={dialog.character}
+          text={dialog.content}
+          OKbutton={false} // Puedes ajustar esto según sea necesario
+          onClose={onCloseDialog}
+        />
+      )}
+      {isLastDialog && ( 
+        <button className={styles.continueButton} onClick={nextRoom}>Continuar</button> //aqui!!
+      )}
+      {false && <button className={styles.nextButton} onClick={onNext}>Next</button>}
 
-      <div className="object" id='pelota'></div>
-      <div className="object" id='oso'></div>
-      <div className="dialog_box">
-          <Dialog
-            className="dialog"
-            title={dialogPages[viewIndex].title}
-            content={dialogPages[viewIndex].content}
-            character={dialogPages[viewIndex].character}
-            onToggle={toggleView}
-          />
-          
-          {(viewIndex === dialogPages.length - 1) ? (
-            <button className='next_button' onClick={closeRoom}>Finish</button>
-          ): <button className='next_button' onClick={toggleDialog}><img src="../imagenes/flecha-verde.png" height={25} alt="flecha" /></button>}
-        
+      <img src={smallImage} alt="Small Button" className={styles.smallButton} onClick={handleOpenPopup} />
+
+      {showPopup && (
+        <div className={styles.popupOverlay}>
+          <div className={styles.popupContent}>
+            <button className={styles.closeButton} onClick={handleClosePopup}>
+              <img src={closeIcon} alt="Close" className={styles.closeIcon} />
+            </button>
+            <img src={realImage} alt="Real Place" className={styles.realImage} />
+          </div>
         </div>
-        <Lupa sala="Juegos"></Lupa>
+      )}
     </div>
   );
 }
+
+Pagina_Sala_Juegos.propTypes = {
+  dialog: PropTypes.object,
+  onNext: PropTypes.func.isRequired,
+  showDialog: PropTypes.bool.isRequired,
+  onCloseDialog: PropTypes.func.isRequired,
+  isLastDialog: PropTypes.bool.isRequired,
+  nextRoom: PropTypes.func.isRequired
+};
+
+Pagina_Sala_Juegos.defaultProps = {
+  dialog: null,
+};
 
 export default Pagina_Sala_Juegos;

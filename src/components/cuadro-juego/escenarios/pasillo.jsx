@@ -2,6 +2,7 @@ import './styles/App.css';
 import './styles/paginas.css';
 
 import styles from './styles/Pasillo.module.css';
+import PropTypes from 'prop-types';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/swiper-bundle.css';
@@ -14,10 +15,12 @@ import Tribunal from './tribunal';
 
 import { useState } from 'react';
 
-function Pasillo() {
+function Pasillo({nextRoom}) {
     const [showPopup, setShowPopup] = useState(true);
 
+
     function openRoom(sala) {
+        check();
         var x = document.getElementById(sala);
         var y = document.getElementById("pasillo");
         var text = document.getElementById("box");
@@ -50,7 +53,7 @@ function Pasillo() {
             <div className={styles.container} id='pasillo'>
                 <Swiper className='mySwiper' id={styles.swiper}>
                     <SwiperSlide id={styles.room1}>
-                        <button className={styles.buttonDoor} onClick={() => openRoom('salaJuegos')}></button>
+                        <button className={styles.buttonDoor} onClick={nextRoom}></button>
                     </SwiperSlide>
                     <SwiperSlide id={styles.room2}>
                         <button className={styles.buttonDoor} onClick={() => openRoom('salaOficina')}></button>
@@ -69,9 +72,6 @@ function Pasillo() {
                     </SwiperSlide>  */}
                 </Swiper>
             </div>
-            <div className={styles.sala} id='salaJuegos' style={{ display: "none" }}>
-                    <Pagina_Sala_Juegos ccloseRoom={closeRoom} />
-                </div>
                 <div className={styles.sala} id='salaOficina' style={{ display: "none" }}>
                     <Pagina_Oficina closeRoom={closeRoom} />
                 </div>
@@ -90,5 +90,9 @@ function Pasillo() {
         </div>
     );
 }
+
+Pasillo.propTypes = {
+    onNext: PropTypes.func.isRequired
+  };
 
 export default Pasillo;
